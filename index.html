@@ -1,288 +1,1198 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="google-site-verification" content="BPWWGGiWZHNG9jGeOXhuPpsH_pX2rzQvgN42VIotAB4" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebFolio - Web Development & Resume Services</title>
-    <meta name="description" content="Pratham Kumar, a B.Tech CS&E student, offering professional web development (HTML, CSS, JS, React, Node.js) and resume creation services. View portfolio and contact for projects.">
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>WebFolio | Professional Web Solutions by Pratham Kumar</title>
+    <meta name="description" content="Pratham Kumar - Professional Web Development & Resume Services. Custom HTML, CSS, JS, React solutions.">
+    <meta name="google-site-verification" content="BPWWGGiWZHNG9jGeOXhuPpsH_pX2rzQvgN42VIotAB4" />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <link rel="icon" type="image/png" href="webfolio logo.jpg">
+
+    <style>
+        /* =========================================
+           1. VARIABLES & RESET
+           ========================================= */
+        :root {
+            --primary-color: #2563eb; /* Modern Royal Blue */
+            --primary-dark: #1d4ed8;
+            --secondary-color: #64748b; /* Slate Gray */
+            --accent-color: #10b981; /* Success Green */
+            --dark-bg: #0f172a; /* Navy Dark */
+            --light-bg: #f8fafc;
+            --white: #ffffff;
+            --text-main: #1e293b;
+            --text-light: #94a3b8;
+            --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.7;
+            color: var(--text-main);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        ul { list-style: none; }
+        
+        /* Utility Classes */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-padding { padding: 100px 0; }
+        .bg-light { background-color: var(--light-bg); }
+        .text-center { text-align: center; }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            color: var(--dark-bg);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 50%;
+            height: 4px;
+            background: var(--primary-color);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            color: var(--secondary-color);
+            max-width: 700px;
+            margin: 0 auto 3rem auto;
+            font-size: 1.1rem;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--white);
+            box-shadow: 0 4px 6px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            color: var(--white);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border-color: var(--white);
+        }
+
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--primary-color);
+        }
+        
+        .btn-outline {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+
+        /* =========================================
+           2. HEADER & NAV
+           ========================================= */
+        .header {
+            background-color: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--white);
+            letter-spacing: 1px;
+        }
+        
+        .logo span { color: var(--primary-color); }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            font-weight: 500;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-toggle {
+            display: none;
+            color: var(--white);
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        /* =========================================
+           3. HERO SECTION
+           ========================================= */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), 
+                        url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            padding-top: 80px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            color: var(--white);
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            color: #cbd5e1;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .hero-buttons {
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        /* =========================================
+           4. ABOUT SECTION
+           ========================================= */
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .about-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--card-shadow);
+            border-top: 4px solid var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .about-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .about-card h3 {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.4rem;
+        }
+
+        .about-card i {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            background: rgba(37, 99, 235, 0.1);
+            padding: 10px;
+            border-radius: 50%;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .skill-tag {
+            background: #e2e8f0;
+            color: var(--text-main);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* =========================================
+           5. PROJECTS SECTION (NEW)
+           ========================================= */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .project-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #eee;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-content h4 {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .project-content p {
+            font-size: 0.95rem;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .cta-card {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        .cta-card h3 { color: var(--white); margin-bottom: 15px; }
+        .cta-card p { color: #e2e8f0; margin-bottom: 25px; }
+
+        /* =========================================
+           6. SERVICES & PRICING
+           ========================================= */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .price-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px 30px;
+            box-shadow: var(--card-shadow);
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .price-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .price-card.featured {
+            border: 2px solid var(--primary-color);
+        }
+
+        .price-card.featured::before {
+            content: 'Popular';
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 5px 40px;
+            transform: rotate(45deg);
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .price-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .price-header h4 { font-size: 1.3rem; color: var(--text-main); }
+        
+        .price-amount {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin: 10px 0;
+        }
+
+        .price-features {
+            list-style: none;
+            margin-bottom: 30px;
+            flex-grow: 1;
+        }
+
+        .price-features li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+            color: var(--secondary-color);
+        }
+
+        .price-features i { color: var(--accent-color); }
+
+        .addons-wrapper {
+            margin-top: 60px;
+        }
+        
+        .addon-card {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .payment-info {
+            background: linear-gradient(45deg, var(--primary-color), var(--primary-dark));
+            color: var(--white);
+            padding: 40px;
+            border-radius: 20px;
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        /* =========================================
+           7. CONTACT SECTION
+           ========================================= */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .contact-info-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .info-item i {
+            width: 45px;
+            height: 45px;
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .info-content h5 { margin-bottom: 2px; font-size: 1rem; }
+        .info-content a { color: var(--secondary-color); font-size: 0.9rem; }
+        .info-content a:hover { color: var(--primary-color); }
+
+        /* Quick Inquiry Styles */
+        .quick-inquiry-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .quick-btn-wrapper {
+            position: relative;
+        }
+
+        .quick-form-panel {
+            display: none;
+            background: #f1f5f9;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 10px;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .quick-form-panel.active { display: block; animation: fadeIn 0.3s; }
+
+        .quick-input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #cbd5e1;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+
+        /* Main Contact Form */
+        .main-form-card {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 500; }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-family: inherit;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .form-status {
+            text-align: center;
+            padding: 10px;
+            margin-top: 15px;
+            border-radius: 5px;
+            display: none;
+        }
+        .form-status.success { background: #d1fae5; color: #065f46; }
+        .form-status.error { background: #fee2e2; color: #991b1b; }
+
+        /* QR Code Toggle Section */
+        .payment-qr {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: var(--light-bg);
+            border-radius: 15px;
+            border: 1px dashed var(--primary-color);
+        }
+
+        .qr-toggle-btn {
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        .qr-content {
+            display: none; /* Hidden by default */
+            animation: fadeIn 0.5s;
+        }
+        
+        .qr-content.show {
+            display: block;
+        }
+
+        .qr-img {
+            max-width: 180px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border: 5px solid #fff;
+        }
+
+        /* =========================================
+           8. SYSTEMATIC FOOTER
+           ========================================= */
+        footer {
+            background: var(--dark-bg);
+            color: #94a3b8;
+            padding: 80px 0 30px;
+            font-size: 0.95rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .footer-col h4::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 30px;
+            height: 2px;
+            background: var(--primary-color);
+        }
+
+        .footer-col p { margin-bottom: 15px; }
+
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a { 
+            color: #94a3b8; 
+            transition: var(--transition); 
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .footer-links a:hover { 
+            color: var(--primary-color); 
+            padding-left: 5px;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .footer-socials a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: var(--white);
+            transition: var(--transition);
+        }
+
+        .footer-socials a:hover {
+            background: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 30px;
+            text-align: center;
+        }
+
+        /* =========================================
+           9. ANIMATIONS & MEDIA QUERIES
+           ========================================= */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Reveal on Scroll Class */
+        .reveal {
+            position: relative;
+            transform: translateY(30px);
+            opacity: 0;
+            transition: 1s all ease;
+        }
+        .reveal.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        @media (max-width: 991px) {
+            .contact-grid { grid-template-columns: 1fr; }
+            .hero-content h1 { font-size: 2.5rem; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                background: var(--dark-bg);
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                padding: 20px;
+                text-align: center;
+            }
+            .nav-links.active { display: flex; }
+            .nav-toggle { display: block; }
+            .pricing-grid { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
+
     <header class="header">
-        <nav class="navbar">
-            <a href="#" class="logo">WebFolio</a>
+        <div class="container navbar">
+            <a href="#" class="logo">Web<span>Folio</span></a>
             <div class="nav-toggle" id="navToggle">
                 <i class="fas fa-bars"></i>
             </div>
             <ul class="nav-links" id="navbarNav">
                 <li><a href="#home">Home</a></li>
-                <li><a href="#about">About Me</a></li>
-                <li><a href="#services">Services & Pricing</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li> <li><a href="#services">Services</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <li><a href="https://rajpratham1.github.io/my-portfolio/" target="_blank" class="btn btn-primary" style="padding: 5px 20px; font-size: 0.9rem;">Portfolio</a></li>
             </ul>
-        </nav>
+        </div>
     </header>
 
     <main>
         <section id="home" class="hero">
-            <div class="hero-content">
-                <h1>Welcome to My Web Development & Resume Services!</h1>
-                <p class="tagline">Hello, I'm Pratham Kumar, a motivated and detail-oriented B.Tech in Computer Science Engineering student with a passion for technology and innovation. I specialize in creating and developing impactful websites and professional resumes for my clients.</p>
+            <div class="container hero-content">
+                <h1>Building Digital Experiences <br> That Matter</h1>
+                <p>Hi, I'm Pratham Kumar. I bridge the gap between creative design and technical implementation. Specializing in Web Development, Java Backend, and Professional Resume Services.</p>
                 <div class="hero-buttons">
-                    <a href="https://rajpratham1.github.io/my-portfolio/" target="_blank" rel="noopener noreferrer" class="button primary-button"><i class="fas fa-code-branch"></i> View My Portfolio</a>
-                    <a href="#contact" class="button secondary-button"><i class="fas fa-handshake"></i> Let's Collaborate</a>
+                    <a href="#projects" class="btn btn-primary">View My Work</a>
+                    <a href="#contact" class="btn btn-secondary">Get in Touch</a>
                 </div>
             </div>
         </section>
 
-        <section id="about" class="section">
+        <section id="about" class="section-padding">
             <div class="container">
-                <h2>About Me</h2>
-                <div class="about-grid">
-                    <div class="about-item">
-                        <h3><i class="fas fa-graduation-cap icon"></i> Software Engineer </h3>
-                        <p>Hello! I'm Pratham Kumar, a passionate and results-driven Software Engineer with a strong foundation in front-end and back-end development. I specialize in building responsive, dynamic websites and user-friendly applications using HTML, CSS, JavaScript, and modern frameworks. With a keen eye for design and a love for clean, efficient code, I strive to create digital experiences that are not only functional but also visually appealing.
+                <div class="text-center reveal">
+                    <h2>About Me</h2>
+                    <p class="section-subtitle">Engineer. Developer. Innovator.</p>
+                </div>
 
-As a B.Tech student in Computer Science Engineering, I’ve worked on multiple projects that demonstrate my ability to solve real-world problems through technology. Whether it’s crafting a personal portfolio, developing a service-based platform, or contributing to team-based projects like sales prediction and sensor systems — I bring dedication, creativity, and technical skills to the table.
+                <div class="about-grid reveal">
+                    <div class="about-card">
+                        <h3><i class="fas fa-code"></i> Developer Profile</h3>
+                        <p>I am a B.Tech Computer Science student at Invertis University with a passion for building robust applications. From Android Development (Java/Kotlin) to Full Stack Web solutions, I focus on writing clean, efficient code that solves real-world problems.</p>
+                    </div>
 
-Let’s build the future, one line of code at a time.</p>
+                    <div class="about-card">
+                        <h3><i class="fas fa-layer-group"></i> Technical Skills</h3>
+                        <div class="skills-container">
+                            <span class="skill-tag">HTML5/CSS3</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">React.js</span>
+                            <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">Java/Kotlin</span>
+                            <span class="skill-tag">Python (ML)</span>
+                            <span class="skill-tag">MySQL/MongoDB</span>
+                            <span class="skill-tag">Git/GitHub</span>
+                        </div>
                     </div>
-                    <div class="about-item">
-                        <h3><i class="fas fa-tools icon"></i> Skills</h3>
-                        <p>I am skilled in a variety of technologies, including:
-                            <div class="skills-list">
-                                <span>Android App Development (Java/Kotlin)</span>
-                                <span>Web Development (HTML, CSS, JavaScript, React.js)</span>
-                                <span>Backend Development (Node.js, Express.js)</span>
-                                <span>Database Management (MySQL, MongoDB)</span>
-                                <span>Data Analysis & Visualization (Python, Pandas, Matplotlib)</span>
-                                <span>Machine Learning (Scikit-learn, Regression Models)</span>
-                                <span>Git & GitHub Version Control</span>
-                                <span>Microsoft 365</span>
-                            </div>
-                        </p>
-                    </div>
-                    <div class="about-item">
-                        <h3><i class="fas fa-briefcase icon"></i> Experience</h3>
-                        <p>I have hands-on experience in project development and volunteering. I previously worked as a <strong>Google Android Developer</strong>, collaborating on real-time Android application development, contributing to UI/UX design, bug fixing, and feature implementation using Kotlin and Android Studio. I also volunteered at Invertis University's job fest and served as a Discipline Coordinator.</p>
-                    </div>
-                    <div class="about-item">
-                        <h3><i class="fas fa-lightbulb icon"></i> Problem-Solving & Teamwork</h3>
-                        <p>I am proficient in problem-solving and debugging, and have experience in team leadership, project management, communication, and client handling.</p>
-                    </div>
-                    <div class="about-item">
-                        <h3><i class="fas fa-language icon"></i> Languages</h3>
-                        <p>I am fluent in both English and Hindi.</p>
-                    </div>
-                    <div class="about-item">
-                        <h3><i class="fas fa-handshake-angle icon"></i> Seeking Opportunities</h3>
-                        <p>I am seeking opportunities to apply my technical knowledge in a dynamic environment and contribute to impactful solutions.</p>
+
+                    <div class="about-card">
+                        <h3><i class="fas fa-briefcase"></i> Experience</h3>
+                        <p>With experience as a Google Android Developer and various university projects (Sales Prediction, Sensor Systems), I bring a blend of leadership and technical expertise. I've also served as a Discipline Coordinator and volunteered for Tech Fests.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="services" class="section bg-light">
+        <section id="projects" class="section-padding bg-light">
             <div class="container">
-                <h2>My Services & Pricing</h2>
-                <p class="section-description">I offer a range of web development services to meet your specific needs. The prices listed below are estimated and can vary depending on the complexity and specific requirements of your project.</p>
+                <div class="text-center reveal">
+                    <h2>Featured Projects</h2>
+                    <p class="section-subtitle">Real-world applications delivering real value.</p>
+                </div>
 
-                <h3>Website Development Packages:</h3>
-                <div class="pricing-grid">
-                    <div class="pricing-card">
-                        <h4>Basic Static Website (1–3 Pages)</h4>
-                        <ul>
-                            <li><i class="fas fa-check-circle"></i> Includes: Home, About, Contact</li>
-                            <li><i class="fas fa-check-circle"></i> Features: Responsive design, basic layout, no dynamic content</li>
-                        </ul>
-                        <div class="price">₹1,000 – ₹3,000</div>
+                <div class="project-grid reveal">
+                    <div class="project-card">
+                        <div class="project-content">
+                            <h4>Mediscan AI</h4>
+                            <p>A Flask-based web app for breast cancer detection using a tuned Random Forest Classifier. High accuracy predictive model.</p>
+                            <a href="https://cancerdetction.vercel.app" target="_blank" class="btn btn-outline text-center">Visit Project</a>
+                        </div>
                     </div>
-                    <div class="pricing-card featured">
-                        <h4>Portfolio Website (3–5 Pages)</h4>
-                        <ul>
-                            <li><i class="fas fa-check-circle"></i> Includes: Projects, Resume, Contact Form, Linked Socials</li>
-                            <li><i class="fas fa-check-circle"></i> Features: Animations, hover effects, responsive, basic JavaScript</li>
-                        </ul>
-                        <div class="price">₹2,000 – ₹5,000</div>
+
+                    <div class="project-card">
+                        <div class="project-content">
+                            <h4>CrimePortal</h4>
+                            <p>A secure web application for reporting and managing crimes. streamlined dashboard for reporting incidents safely.</p>
+                            <a href="https://crimeportal-mu.vercel.app/team" target="_blank" class="btn btn-outline text-center">Visit Project</a>
+                        </div>
                     </div>
-                    <div class="pricing-card">
-                        <h4>Business/Startup Website (5–7 Pages)</h4>
-                        <ul>
-                            <li><i class="fas fa-check-circle"></i> Includes: Home, Services, Team, Contact, Testimonials</li>
-                            <li><i class="fas fa-check-circle"></i> Features: Responsive, form validations, gallery, animation, JavaScript interactivity</li>
-                        </ul>
-                        <div class="price">₹4,000 – ₹10,000</div>
+
+                    <div class="project-card">
+                        <div class="project-content">
+                            <h4>Cyber Threat Intel</h4>
+                            <p>Visualizes live global cyber threats with attack trends. Real-time data visualization for security monitoring.</p>
+                            <a href="https://cyber-threat-intelligence-z8lc.onrender.com" target="_blank" class="btn btn-outline text-center">Visit Project</a>
+                        </div>
                     </div>
-                    <div class="pricing-card">
-                        <h4>Landing Page</h4>
-                        <ul>
-                            <li><i class="fas fa-check-circle"></i> Single Page: Optimized for conversion (product/service/offer)</li>
-                            <li><i class="fas fa-check-circle"></i> Features: Scroll effects, forms, CTA buttons</li>
-                        </ul>
-                        <div class="price">₹1,500 – ₹4,000</div>
+
+                    <div class="project-card">
+                        <div class="project-content">
+                            <h4>Aether Tools</h4>
+                            <p>A multi-utility website featuring air condition monitoring, precise stopwatch, and custom alarm systems.</p>
+                            <a href="https://rajpratham1.github.io/Aether-Tools/" target="_blank" class="btn btn-outline text-center">Visit Project</a>
+                        </div>
                     </div>
-                    <div class="pricing-card">
-                        <h4>Multi-Page Website (8–15 Pages)</h4>
-                        <ul>
-                            <li><i class="fas fa-check-circle"></i> Includes: Full-featured business website or small organization site</li>
-                            <li><i class="fas fa-check-circle"></i> Features: Forms, pop-ups, sliders, responsive, advanced styling</li>
+
+                    <div class="project-card">
+                        <div class="project-content">
+                            <h4>Disaster Ready Campus</h4>
+                            <p>Innovative Hackathon solution designed to make university campuses disaster-ready and resilient.</p>
+                            <a href="https://disaster-ready-campus.onrender.com" target="_blank" class="btn btn-outline text-center">Visit Project</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card cta-card">
+                        <div class="project-content">
+                            <h3><i class="fas fa-hand-shake"></i> Ready to Build?</h3>
+                            <p>I am here ready for your order. Let's create your next great project together.</p>
+                            <a href="#contact" class="btn btn-secondary">Start Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="services" class="section-padding">
+            <div class="container">
+                <div class="text-center reveal">
+                    <h2>Services & Pricing</h2>
+                    <p class="section-subtitle">Transparent pricing for professional quality work.</p>
+                </div>
+
+                <div class="pricing-grid reveal">
+                    <div class="price-card">
+                        <div class="price-header">
+                            <h4>Basic Website</h4>
+                            <div class="price-amount">₹1k - ₹3k</div>
+                            <p>Perfect for personal info or small tasks.</p>
+                        </div>
+                        <ul class="price-features">
+                            <li><i class="fas fa-check-circle"></i> 1-3 Static Pages</li>
+                            <li><i class="fas fa-check-circle"></i> Mobile Responsive</li>
+                            <li><i class="fas fa-check-circle"></i> Contact Form</li>
+                            <li><i class="fas fa-check-circle"></i> Basic SEO</li>
                         </ul>
-                        <div class="price">₹8,000 – ₹20,000</div>
+                        <a href="#contact" class="btn btn-outline text-center">Select Plan</a>
+                    </div>
+
+                    <div class="price-card featured">
+                        <div class="price-header">
+                            <h4>Portfolio / Resume</h4>
+                            <div class="price-amount">₹2k - ₹5k</div>
+                            <p>Showcase your work professionally.</p>
+                        </div>
+                        <ul class="price-features">
+                            <li><i class="fas fa-check-circle"></i> 3-5 Interactive Pages</li>
+                            <li><i class="fas fa-check-circle"></i> Projects Gallery</li>
+                            <li><i class="fas fa-check-circle"></i> Animations & Hover Effects</li>
+                            <li><i class="fas fa-check-circle"></i> Social Media Integration</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-primary text-center">Select Plan</a>
+                    </div>
+
+                    <div class="price-card">
+                        <div class="price-header">
+                            <h4>Business / Startup</h4>
+                            <div class="price-amount">₹4k - ₹10k</div>
+                            <p>Complete solution for your brand.</p>
+                        </div>
+                        <ul class="price-features">
+                            <li><i class="fas fa-check-circle"></i> 5-7 Dynamic Pages</li>
+                            <li><i class="fas fa-check-circle"></i> Advanced JavaScript Features</li>
+                            <li><i class="fas fa-check-circle"></i> Admin Dashboard Support</li>
+                            <li><i class="fas fa-check-circle"></i> 1 Month Support</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-outline text-center">Select Plan</a>
                     </div>
                 </div>
 
-                <h3>Custom Functionality & Add-ons:</h3>
-                <div class="add-ons-grid">
-                    <div class="add-on-item">
-                        <h4>Custom JavaScript Functionality</h4>
-                        <p>Examples: Calculators, form validators, lightboxes, custom sliders</p>
-                        <div class="price">₹500 – ₹2,000 <small>(per feature, depending on complexity)</small></div>
-                    </div>
-                    <div class="add-on-item">
-                        <h4>Extra Add-ons</h4>
-                        <ul>
-                            <li><i class="fas fa-cogs"></i> Contact Form with Validation: ₹500 – ₹1,500</li>
-                            <li><i class="fas fa-chart-line"></i> SEO Setup (basic): ₹500 – ₹1,000</li>
-                            <li><i class="fas fa-images"></i> Image Optimization: ₹300 – ₹700</li>
-                            <li><i class="fas fa-magic"></i> Animation/Scroll Effects: ₹500 – ₹2,000</li>
-                            <li><i class="fas fa-server"></i> Hosting + Domain Setup Help: ₹500 – ₹1,000</li>
-                        </ul>
+                <div class="addons-wrapper reveal">
+                    <h3 class="text-center">Custom Add-ons</h3>
+                    <div class="about-grid" style="margin-top:20px;">
+                        <div class="about-card">
+                            <h4>Custom JS Functions</h4>
+                            <p>Calculators, Validators, Sliders</p>
+                            <span style="color:var(--primary-color); font-weight:bold;">₹500 - ₹2,000</span>
+                        </div>
+                        <div class="about-card">
+                            <h4>Hosting Setup</h4>
+                            <p>Domain Connection & Server Setup</p>
+                            <span style="color:var(--primary-color); font-weight:bold;">₹500 - ₹1,000</span>
+                        </div>
+                        <div class="about-card">
+                            <h4>Advanced SEO</h4>
+                            <p>Ranking optimization & Analytics</p>
+                            <span style="color:var(--primary-color); font-weight:bold;">₹500 - ₹1,000</span>
+                        </div>
                     </div>
                 </div>
 
-                <div class="payment-process">
-                    <h3>Payment Process</h3>
-                    <p>To start your project, a **half payment is required before work begins**. The final payment is due upon successful submission of the completed project. The fee can also vary according to the specific work involved.</p>
+                <div class="payment-info reveal">
+                    <h3><i class="fas fa-lock"></i> Payment Terms</h3>
+                    <p>To ensure commitment, a <strong>50% advance payment</strong> is required to start the project. The remaining balance is due upon project completion and review.</p>
                 </div>
             </div>
         </section>
 
-        <section id="contact" class="section">
+        <section id="contact" class="section-padding bg-light">
             <div class="container">
-                <h2>Contact Me</h2>
-                <p class="section-description">For the best knowledge about fees or to discuss your project, please feel free to contact me:</p>
-
-                <div class="contact-methods-grid">
-                    <div class="contact-method-card">
-                        <h3>Direct Contact</h3>
-                        <p><i class="fas fa-phone-alt"></i> Phone: <a href="tel:+916200892887">Contact Number</a></p>
-                        <p><i class="fas fa-envelope"></i> Email: <a href="mailto:rajpratham40@gmail.com">rajpratham40@gmail.com</a></p>
-                        <p><i class="fas fa-whatsapp"></i> Whatsapp: <a href="https://wa.me/916200892887">Whatsapp</a></p>
-                        <p><i class="fas fa-insta-alt"></i> Instagram: <a href="https://www.instagram.com/webfolio40?igsh=MXNjNWRkNGdiMGtq">Insta Profile</a></p>
-                        <p><i class="fas fa-facebook"></i> Facebook: <a href="https://www.facebook.com/share/1RHwc8bSQy/">Facebook</a></p>
-                        <p><i class="fas fa-X"></i> X: <a href="https://x.com/prathamshriva18?t=VpJC3ic3egfuZdhIWa2yJg&s=09">X</a></p>
-                        <p><i class="fas fa-Github"></i> Github: <a href="https://github.com/rajpratham1">Github</a></p>
-                        <p><i class="fas fa-Linkdin"></i> Linkdin: <a href="https://www.linkedin.com/in/pratham-kumar-2a4b151a7?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">Linkdin</a></p>
-                    </div>
-
-                    <div class="contact-method-card">
-                        <h3>Quick Inquiries Directly</h3>
-                        <p>Click on any option below to send a quick message directly to me. Please provide your details:</p>
-                        <div class="quick-inquiry-buttons-container">
-                            <div class="quick-inquiry-item">
-                                <button type="button" class="button secondary-button quick-inquiry-toggle" data-target="any-query-form"><i class="fas fa-question-circle"></i> Any Query</button>
-                                <form class="quick-inquiry-form hidden" id="any-query-form" action="https://formspree.io/f/xvgrnpyb" method="POST">
-                                    <input type="hidden" name="_subject" value="Quick Inquiry: Any General Query">
-                                    <div class="form-group">
-                                        <input type="text" name="name" placeholder="Your Name" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="email" name="_replyto" placeholder="Your Email" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <textarea name="message" rows="2" placeholder="Your short message here (optional)"></textarea>
-                                    </div>
-                                    <button type="submit" class="button primary-button small-button">Send</button>
-                                    <p class="form-status" id="status-any-query"></p>
-                                </form>
-                            </div>
-
-                            <div class="quick-inquiry-item">
-                                <button type="button" class="button secondary-button quick-inquiry-toggle" data-target="about-fee-form"><i class="fas fa-money-bill-alt"></i> About Fee</button>
-                                <form class="quick-inquiry-form hidden" id="about-fee-form" action="https://formspree.io/f/xrbkvzdo" method="POST">
-                                    <input type="hidden" name="_subject" value="Quick Inquiry: About Fees">
-                                    <div class="form-group">
-                                        <input type="text" name="name" placeholder="Your Name" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="email" name="_replyto" placeholder="Your Email" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <textarea name="message" rows="2" placeholder="Specify project type (optional)"></textarea>
-                                    </div>
-                                    <button type="submit" class="button primary-button small-button">Send</button>
-                                    <p class="form-status" id="status-about-fee"></p>
-                                </form>
-                            </div>
-
-                            <div class="quick-inquiry-item">
-                                <button type="button" class="button secondary-button quick-inquiry-toggle" data-target="website-inquiry-form"><i class="fas fa-globe"></i> Website Inquiry</button>
-                                <form class="quick-inquiry-form hidden" id="website-inquiry-form" action="https://formspree.io/f/xnnvyarw" method="POST">
-                                    <input type="hidden" name="_subject" value="Quick Inquiry: Website Project">
-                                    <div class="form-group">
-                                        <input type="text" name="name" placeholder="Your Name" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="email" name="_replyto" placeholder="Your Email" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <textarea name="message" rows="2" placeholder="Briefly describe your website needs (optional)"></textarea>
-                                    </div>
-                                    <button type="submit" class="button primary-button small-button">Send</button>
-                                    <p class="form-status" id="status-website-inquiry"></p>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+                <div class="text-center reveal">
+                    <h2>Get In Touch</h2>
+                    <p class="section-subtitle">Ready to start? Contact me via any channel below.</p>
                 </div>
 
-                <div class="contact-form-section">
-                    <h3>Send Me a Detailed Message</h3>
-                    <p>Use the form below to send me a more detailed message directly. I will receive it in my inbox!</p>
-                    <form id="detailedContactForm" class="contact-form" action="https://formspree.io/f/mpwreabr" method="POST">
-                        <div class="form-group">
-                            <label for="detailed-name">Your Name</label>
-                            <input type="text" id="detailed-name" name="name" required>
+                <div class="contact-grid reveal">
+                    <div>
+                        <div class="contact-info-card">
+                            <div class="info-item">
+                                <i class="fas fa-phone-alt"></i>
+                                <div class="info-content">
+                                    <h5>Phone</h5>
+                                    <a href="tel:+916200892887">+91 6200892887</a>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-envelope"></i>
+                                <div class="info-content">
+                                    <h5>Email</h5>
+                                    <a href="mailto:rajpratham40@gmail.com">rajpratham40@gmail.com</a>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <i class="fab fa-whatsapp"></i>
+                                <div class="info-content">
+                                    <h5>WhatsApp</h5>
+                                    <a href="https://wa.me/916200892887">Chat Now</a>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <i class="fab fa-linkedin"></i>
+                                <div class="info-content">
+                                    <h5>LinkedIn</h5>
+                                    <a href="https://www.linkedin.com/in/pratham-kumar-2a4b151a7">View Profile</a>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="detailed-replyto">Your Email</label>
-                            <input type="email" id="detailed-replyto" name="_replyto" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="detailed-subject">Subject</label>
-                            <input type="text" id="detailed-subject" name="_subject" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="detailed-message">Your Message</label>
-                            <textarea id="detailed-message" name="message" rows="6" required></textarea>
-                        </div>
-                        <button type="submit" class="button primary-button"><i class="fas fa-paper-plane"></i> Send Message Directly</button>
-                        <p id="formStatusDetailed" class="form-status"></p>
-                    </form>
-                </div>
 
-                <div class="payment-qr">
-                    <h3>Alternatively, you can pay half payment using this QR code:</h3>
-                    <img src="paytm qr.jpg" alt="UPI QR Code for Payment" class="qr-code-img">
-                    <a href="upi://pay?pa=6200892887@ptyes&pn=Pratham%20Kumar" class="button primary-button qr-button" target="_blank" rel="noopener noreferrer">Pay with UPI App</a>
-                    <p class="qr-note">Scan the QR code or click the button to pay directly via your UPI app.</p>
+                        <h4 style="margin-top:30px; font-size:1.2rem;">Quick Inquiry</h4>
+                        <div class="quick-inquiry-container">
+                            <div class="quick-btn-wrapper">
+                                <button class="btn btn-outline quick-toggle" style="width:100%; font-size:0.8rem;" data-target="quick-gen">General Query</button>
+                                <form action="https://formspree.io/f/xvgrnpyb" method="POST" id="quick-gen" class="quick-form-panel">
+                                    <input type="text" name="name" placeholder="Name" class="quick-input" required>
+                                    <input type="email" name="_replyto" placeholder="Email" class="quick-input" required>
+                                    <textarea name="message" placeholder="Query..." class="quick-input" rows="2"></textarea>
+                                    <button type="submit" class="btn btn-primary" style="padding: 5px 15px; font-size:0.8rem;">Send</button>
+                                    <p class="form-status"></p>
+                                </form>
+                            </div>
+                             <div class="quick-btn-wrapper">
+                                <button class="btn btn-outline quick-toggle" style="width:100%; font-size:0.8rem;" data-target="quick-fee">Fee Inquiry</button>
+                                <form action="https://formspree.io/f/xrbkvzdo" method="POST" id="quick-fee" class="quick-form-panel">
+                                    <input type="text" name="name" placeholder="Name" class="quick-input" required>
+                                    <input type="email" name="_replyto" placeholder="Email" class="quick-input" required>
+                                    <textarea name="message" placeholder="Project Type..." class="quick-input" rows="2"></textarea>
+                                    <button type="submit" class="btn btn-primary" style="padding: 5px 15px; font-size:0.8rem;">Send</button>
+                                    <p class="form-status"></p>
+                                </form>
+                            </div>
+                        </div>
+                        
+                        <div class="payment-qr">
+                            <h5>Advance Payment</h5>
+                            <button id="showQrBtn" class="btn btn-outline qr-toggle-btn"><i class="fas fa-qrcode"></i> Show/Hide QR Code</button>
+                            
+                            <div id="qrContent" class="qr-content">
+                                <img src="paytm qr.jpg" alt="UPI QR" class="qr-img">
+                                <br>
+                                <a href="upi://pay?pa=6200892887@ptyes&pn=Pratham%20Kumar" class="btn btn-primary" style="font-size:0.9rem;"><i class="fas fa-mobile-alt"></i> Pay via UPI App</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="main-form-card">
+                        <h3>Detailed Project Request</h3>
+                        <p style="margin-bottom:20px; color:#64748b;">Tell me about your project in detail.</p>
+                        <form id="detailedForm" action="https://formspree.io/f/mpwreabr" method="POST">
+                            <div class="form-group">
+                                <label>Your Name</label>
+                                <input type="text" name="name" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Your Email</label>
+                                <input type="email" name="_replyto" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Subject</label>
+                                <input type="text" name="_subject" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Message</label>
+                                <textarea name="message" class="form-control" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary" style="width:100%;">Send Message</button>
+                            <p id="detailedStatus" class="form-status"></p>
+                        </form>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="footer">
+    <footer>
         <div class="container">
-            <p>&copy; <span id="currentYear"></span> Pratham Kumar. All rights reserved.</p>
-            <div class="social-links">
-                <a href="https://github.com/rajpratham1" target="_blank" rel="noopener noreferrer" title="GitHub Profile"><i class="fab fa-github"></i></a>
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="#" class="logo">Web<span>Folio</span></a>
+                    <p style="margin-top:15px; color:#94a3b8;">Delivering excellence in web development and technical solutions. Pratham Kumar is your partner in digital innovation.</p>
                 </div>
+                
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#about"><i class="fas fa-chevron-right"></i> About</a></li>
+                        <li><a href="#projects"><i class="fas fa-chevron-right"></i> Projects</a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Services</a></li>
+                        <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul class="footer-links">
+                        <li><a href="tel:+916200892887"><i class="fas fa-phone"></i> +91-6200892887</a></li>
+                        <li><a href="mailto:rajpratham40@gmail.com"><i class="fas fa-envelope"></i> rajpratham40@gmail.com</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Invertis University, Bareilly</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Follow Me</h4>
+                    <div class="footer-socials">
+                        <a href="https://github.com/rajpratham1"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/pratham-kumar-2a4b151a7"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com/webfolio40"><i class="fab fa-instagram"></i></a>
+                        <a href="https://x.com/prathamshriva18"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; <span id="year"></span> Pratham Kumar | WebFolio. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Mobile Navigation
+            const navToggle = document.getElementById('navToggle');
+            const navBarNav = document.getElementById('navbarNav');
+            
+            navToggle.addEventListener('click', () => {
+                navBarNav.classList.toggle('active');
+            });
+
+            // Close menu when clicking a link
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navBarNav.classList.remove('active');
+                });
+            });
+
+            // 2. Sticky Header & Scroll Spy
+            window.addEventListener('scroll', () => {
+                const header = document.querySelector('.header');
+                header.style.background = window.scrollY > 50 ? 'rgba(15, 23, 42, 0.98)' : 'rgba(15, 23, 42, 0.9)';
+            });
+
+            // 3. Scroll Reveal Animation
+            function reveal() {
+                var reveals = document.querySelectorAll(".reveal");
+                for (var i = 0; i < reveals.length; i++) {
+                    var windowHeight = window.innerHeight;
+                    var elementTop = reveals[i].getBoundingClientRect().top;
+                    var elementVisible = 150;
+                    if (elementTop < windowHeight - elementVisible) {
+                        reveals[i].classList.add("active");
+                    }
+                }
+            }
+            window.addEventListener("scroll", reveal);
+            reveal(); // Trigger once on load
+
+            // 4. Quick Inquiry Toggle Logic
+            document.querySelectorAll('.quick-toggle').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = btn.getAttribute('data-target');
+                    const form = document.getElementById(targetId);
+                    
+                    // Close others
+                    document.querySelectorAll('.quick-form-panel').forEach(f => {
+                        if(f.id !== targetId) f.classList.remove('active');
+                    });
+                    
+                    form.classList.toggle('active');
+                });
+            });
+
+            // 5. QR Code Toggle Logic (NEW)
+            const showQrBtn = document.getElementById('showQrBtn');
+            const qrContent = document.getElementById('qrContent');
+            if(showQrBtn && qrContent) {
+                showQrBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    qrContent.classList.toggle('show');
+                });
+            }
+
+            // 6. Form Submission Logic (Generic)
+            async function handleFormSubmit(event, form) {
+                event.preventDefault();
+                const status = form.querySelector('.form-status');
+                status.style.display = 'block';
+                status.textContent = 'Sending...';
+                status.className = 'form-status';
+
+                const formData = new FormData(form);
+
+                try {
+                    const response = await fetch(form.action, {
+                        method: form.method,
+                        body: formData,
+                        headers: { 'Accept': 'application/json' }
+                    });
+
+                    if (response.ok) {
+                        status.textContent = 'Message sent successfully!';
+                        status.classList.add('success');
+                        form.reset();
+                        // Close quick forms automatically after success
+                        if(form.classList.contains('quick-form-panel')) {
+                            setTimeout(() => { form.classList.remove('active'); status.style.display='none'; }, 3000);
+                        }
+                    } else {
+                        status.textContent = 'Oops! There was a problem.';
+                        status.classList.add('error');
+                    }
+                } catch (error) {
+                    status.textContent = 'Network error. Try again.';
+                    status.classList.add('error');
+                }
+            }
+
+            // Attach to detailed form
+            const detailedForm = document.getElementById('detailedForm');
+            if(detailedForm) {
+                detailedForm.addEventListener('submit', (e) => handleFormSubmit(e, detailedForm));
+            }
+
+            // Attach to quick forms
+            document.querySelectorAll('.quick-form-panel').forEach(form => {
+                form.addEventListener('submit', (e) => handleFormSubmit(e, form));
+            });
+
+            // 7. Copyright Year
+            document.getElementById('year').textContent = new Date().getFullYear();
+        });
+    </script>
 </body>
 </html>
