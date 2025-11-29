@@ -298,7 +298,7 @@
         }
 
         /* =========================================
-           5. PROJECTS SECTION (NEW)
+           5. PROJECTS SECTION
            ========================================= */
         .project-grid {
             display: grid;
@@ -354,6 +354,38 @@
         
         .cta-card h3 { color: var(--white); margin-bottom: 15px; }
         .cta-card p { color: #e2e8f0; margin-bottom: 25px; }
+
+        /* NEW: CLIENT DELIVERIES STYLES */
+        .client-img-wrapper {
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+            border-bottom: 1px solid #f0f0f0;
+            position: relative;
+        }
+        
+        .client-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .client-img-wrapper img {
+            transform: scale(1.05);
+        }
+
+        .client-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--accent-color);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
 
         /* =========================================
            6. SERVICES & PRICING
@@ -736,7 +768,8 @@
             <ul class="nav-links" id="navbarNav">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li> <li><a href="#services">Services</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#services">Services</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li><a href="https://rajpratham1.github.io/my-portfolio/" target="_blank" class="btn btn-primary" style="padding: 5px 20px; font-size: 0.9rem;">Portfolio</a></li>
             </ul>
@@ -848,6 +881,60 @@
                 </div>
             </div>
         </section>
+
+        <section id="client-feedback" class="section-padding">
+            <div class="container">
+                <div class="text-center reveal">
+                    <h2>Client Deliveries & Feedback</h2>
+                    <p class="section-subtitle">Successful projects delivered to happy clients who sent their thanks.</p>
+                </div>
+
+                <div class="project-grid reveal">
+                    <div class="project-card">
+                        <a href="https://rajpratham1.github.io/Sunrise-Polutry/" target="_blank">
+                            <div class="client-img-wrapper">
+                                <span class="client-badge"><i class="fas fa-check-circle"></i> Delivered</span>
+                                <img src="s1.png" alt="Sunrise Poultry Website">
+                            </div>
+                            <div class="project-content">
+                                <h4>Sunrise-Polutry</h4>
+                                <p>Complete business website solution. Click image to view live site.</p>
+                                <span class="btn btn-outline text-center" style="font-size:0.8rem; padding:8px 15px;">View Live Site</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="project-card">
+                        <a href="https://rajpratham1.github.io/ujjawal-cv-/" target="_blank">
+                            <div class="client-img-wrapper">
+                                <span class="client-badge"><i class="fas fa-check-circle"></i> Delivered</span>
+                                <img src="s2.png" alt="Ujjawal Portfolio">
+                            </div>
+                            <div class="project-content">
+                                <h4>Portfolio (Ujjawal)</h4>
+                                <p>Professional CV and portfolio website. Click image to view live site.</p>
+                                <span class="btn btn-outline text-center" style="font-size:0.8rem; padding:8px 15px;">View Live Site</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="project-card">
+                        <a href="https://rajpratham1.github.io/Bihari-Rasoi/" target="_blank">
+                            <div class="client-img-wrapper">
+                                <span class="client-badge"><i class="fas fa-check-circle"></i> Delivered</span>
+                                <img src="s3.png" alt="Bihari Rasoi Website">
+                            </div>
+                            <div class="project-content">
+                                <h4>Bihari-Rasoi</h4>
+                                <p>Restaurant business website. Click image to view live site.</p>
+                                <span class="btn btn-outline text-center" style="font-size:0.8rem; padding:8px 15px;">View Live Site</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="services" class="section-padding">
             <div class="container">
                 <div class="text-center reveal">
