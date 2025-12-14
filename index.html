@@ -595,6 +595,7 @@
                                     <input type="email" name="_replyto" placeholder="Email" class="quick-input" required>
                                     <textarea name="message" placeholder="Message..." class="quick-input" rows="2"></textarea>
                                     <button type="submit" class="btn btn-primary" style="font-size:0.8rem; width:100%;">Send</button>
+                                    <p class="form-status" style="display:none; font-size: 0.8rem; margin-top: 10px;"></p>
                                 </form>
 
                                 <button class="quick-btn" onclick="toggleForm('quick-fee')">Fee Inquiry</button>
@@ -603,6 +604,7 @@
                                     <input type="email" name="_replyto" placeholder="Email" class="quick-input" required>
                                     <textarea name="message" placeholder="Budget/Project..." class="quick-input" rows="2"></textarea>
                                     <button type="submit" class="btn btn-primary" style="font-size:0.8rem; width:100%;">Send</button>
+                                    <p class="form-status" style="display:none; font-size: 0.8rem; margin-top: 10px;"></p>
                                 </form>
                             </div>
                         </div>
@@ -853,6 +855,67 @@
             });
 
             document.getElementById('year').textContent = new Date().getFullYear();
+
+            // ==========================================
+            // AJAX FORM SUBMISSION HANDLERS
+            // ==========================================
+            
+            // Helper function to handle form submission
+            function handleAjaxSubmit(event) {
+                event.preventDefault();
+                const form = event.target;
+                const button = form.querySelector('button[type="submit"]');
+                // Find the status element: either class .form-status or ID #detailedStatus
+                const statusText = form.querySelector('.form-status') || document.getElementById('detailedStatus');
+                
+                // Disable button and change text
+                const originalBtnText = button.innerText;
+                button.disabled = true;
+                button.innerText = "Sending...";
+
+                fetch(form.action, {
+                    method: form.method,
+                    body: new FormData(form),
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                }).then(response => {
+                    if (response.ok) {
+                        statusText.style.display = 'block';
+                        statusText.style.color = '#10b981'; // Success Green
+                        statusText.innerText = "Message sent successfully!";
+                        form.reset();
+                    } else {
+                        response.json().then(data => {
+                            if (Object.hasOwn(data, 'errors')) {
+                                statusText.innerText = data["errors"].map(error => error["message"]).join(", ");
+                            } else {
+                                statusText.innerText = "Oops! There was a problem.";
+                            }
+                            statusText.style.display = 'block';
+                            statusText.style.color = '#ef4444'; // Error Red
+                        })
+                    }
+                }).catch(error => {
+                    statusText.innerText = "Error sending message.";
+                    statusText.style.display = 'block';
+                    statusText.style.color = '#ef4444';
+                }).finally(() => {
+                    button.disabled = false;
+                    button.innerText = originalBtnText;
+                });
+            }
+
+            // Attach listeners to the 3 forms
+            const form1 = document.getElementById('quick-gen');
+            if(form1) form1.addEventListener('submit', handleAjaxSubmit);
+
+            const form2 = document.getElementById('quick-fee');
+            if(form2) form2.addEventListener('submit', handleAjaxSubmit);
+
+            const form3 = document.getElementById('detailedForm');
+            if(form3) form3.addEventListener('submit', handleAjaxSubmit);
+
         });
 
         function toggleForm(id) {
@@ -874,3 +937,4 @@
     </script>
 </body>
 </html>
+
