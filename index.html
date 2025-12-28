@@ -413,6 +413,18 @@
                 </div>
 
                 <div class="project-grid reveal">
+                    
+                    <div class="project-card glass-card">
+                        <div class="client-img-wrapper" onclick="openImageModal('https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop')">
+                            <span class="client-badge"><i class="fas fa-check-circle"></i> Delivered</span>
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=500&auto=format&fit=crop" alt="BilloraX Platform">
+                        </div>
+                        <div class="project-content">
+                            <h4>BilloraX</h4>
+                            <p>Advanced billing & inventory management system with automated invoicing and stock tracking.</p>
+                            <a href="https://billorax.vercel.app/" target="_blank" class="btn btn-outline text-center">View Live Site</a>
+                        </div>
+                    </div>
                     <div class="project-card glass-card">
                         <div class="client-img-wrapper" onclick="openImageModal('s1.png')">
                             <span class="client-badge"><i class="fas fa-check-circle"></i> Delivered</span>
@@ -748,7 +760,7 @@
             for (let a = 0; a < particlesArray.length; a++) {
                 for (let b = a; b < particlesArray.length; b++) {
                     let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x)) + 
-                                   ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
+                                  ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
                     if (distance < (canvas.width/7) * (canvas.height/7)) {
                         opacityValue = 1 - (distance/20000);
                         ctx.strokeStyle = document.body.classList.contains('dark-mode') ? 'rgba(59, 130, 246,' + opacityValue + ')' : 'rgba(148, 163, 184,' + opacityValue + ')';
@@ -827,7 +839,7 @@
                 'heroDesc': 'WebFolio में आपका स्वागत है। हम विज़न और वास्तविकता के बीच की खाई को पाटते हैं।',
                 'btn_work': 'केस स्टडीज', 'btn_contact': 'प्रोजेक्ट शुरू करें',
                 'title_about': 'विशेषज्ञता', 'card1_title': 'इंजीनियरिंग', 'card2_title': 'टेक स्टैक', 'card3_title': 'ट्रैक रिकॉर्ड',
-                'title_process': 'विकास प्रक्रिया', 'step1_title': 'रणनीति', 'step2_title': 'डिज़ाइन', 'step3_title': 'लॉन्च',
+                'title_process': 'विकास प्रक्रिया', 'step1_title': 'रणनीति', 'step2_title': 'डिज़ाइन', 'step3_title': 'लॉन्च',
                 'title_projects': 'केस स्टडीज', 'title_clients': 'क्लाइंट डिलीवरी', 'sub_clients': 'सफल प्रोजेक्ट्स',
                 'title_testi': 'ग्राहक की राय', 'title_services': 'योजनाएं', 'title_faq': 'सामान्य प्रश्न',
                 'title_contact': 'संपर्क करें', 'sub_contact': 'आइए कुछ अद्भुत बनाएं।', 'badge_secure':'सुरक्षित', 'badge_time':'तेज़','badge_support':'24/7'
@@ -937,4 +949,3 @@
     </script>
 </body>
 </html>
-
