@@ -1,951 +1,329 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+  <meta charset="UTF-8">
+  
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebFolio | Professional Web Solutions by Pratham Kumar</title>
-    <meta name="description" content="Pratham Kumar - Professional Web Development & Resume Services. Custom HTML, CSS, JS, React solutions.">
-    <link rel="icon" type="image/jpeg" href="webfolio%20logo.jpg">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<title>Home | WebFolio</title>
+<meta name="description" content="WebFolio multi-page portfolio home page.">
+  
+  <meta name="robots" content="index, follow">
+  
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://rajpratham1.github.io/my-portfolio/">
+  
+  <meta property="og:site_name" content="WebFolio">
+  <meta property="og:title" content="Home | WebFolio">
+  <meta property="og:description" content="WebFolio multi-page portfolio home page.">
+  <meta property="og:url" content="https://rajpratham1.github.io/my-portfolio/">
+  <meta property="og:image" content="https://rajpratham1.github.io/my-portfolio/assets/logo/webfolio-mark.svg">
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@webfolio">
+  <meta name="twitter:title" content="Home | WebFolio">
+  <meta name="twitter:description" content="WebFolio multi-page portfolio home page.">
+  <meta name="twitter:image" content="https://rajpratham1.github.io/my-portfolio/assets/logo/webfolio-mark.svg">
 
-    <style>
-        /* =========================================
-           CORE VARIABLES & THEME
-           ========================================= */
-        :root {
-            --primary-color: #3b82f6;
-            --primary-glow: rgba(59, 130, 246, 0.5);
-            --secondary-color: #64748b;
-            --accent-color: #10b981;
-            
-            /* Light Mode Defaults */
-            --bg-body: #f8fafc;
-            --bg-glass: rgba(255, 255, 255, 0.85);
-            --text-main: #0f172a;
-            --text-muted: #475569;
-            --border-color: rgba(0,0,0,0.1);
-            --nav-bg: rgba(255, 255, 255, 0.95);
-            --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
-        }
+  <!-- Analytics: replace G-XXXXXXXXXX with your real GA4 Measurement ID -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+  <meta name="theme-color" content="#0a1020">
 
-        /* DARK MODE - 3D TECH LOOK */
-        body.dark-mode {
-            --bg-body: #020617; /* Deepest Blue/Black */
-            --bg-glass: rgba(15, 23, 42, 0.7); /* Dark Glass */
-            --text-main: #f8fafc;
-            --text-muted: #cbd5e1;
-            --border-color: rgba(255, 255, 255, 0.1);
-            --nav-bg: rgba(2, 6, 23, 0.95);
-            --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
-            --primary-glow: rgba(59, 130, 246, 0.9);
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        
-        body {
-            font-family: 'Poppins', sans-serif;
-            line-height: 1.8;
-            color: var(--text-main);
-            background-color: var(--bg-body);
-            overflow-x: hidden;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        /* 3D CANVAS BACKGROUND */
-        #tech-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
-        ul { list-style: none; }
-        img { max-width: 100%; display: block; }
-
-        /* GLASSMORPHISM CARD */
-        .glass-card {
-            background: var(--bg-glass);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid var(--border-color);
-            box-shadow: var(--shadow);
-            border-radius: 20px;
-        }
-
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        .section-padding { padding: 100px 0; }
-        .text-center { text-align: center; }
-        
-        h1, h2, h3, h4 { font-weight: 700; line-height: 1.2; margin-bottom: 1rem; color: var(--text-main); }
-        h2 { font-size: 2.5rem; margin-bottom: 1.5rem; position: relative; display: inline-block; }
-        h2::after { content: ''; display: block; width: 60px; height: 5px; background: var(--primary-color); margin: 15px auto 0; border-radius: 5px; box-shadow: 0 0 15px var(--primary-glow); }
-        
-        .section-subtitle { color: var(--text-muted); max-width: 700px; margin: 0 auto 4rem auto; font-size: 1.1rem; }
-
-        /* BUTTONS */
-        .btn { display: inline-block; padding: 14px 35px; border-radius: 50px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; font-size: 1rem; border: 2px solid transparent; }
-        .btn-primary { background: var(--primary-color); color: #fff; box-shadow: 0 0 15px var(--primary-glow); }
-        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 0 25px var(--primary-glow); }
-        .btn-outline { border-color: var(--primary-color); color: var(--primary-color); background: transparent; }
-        .btn-outline:hover { background: var(--primary-color); color: #fff; }
-
-        /* HEADER */
-        .header { position: fixed; top: 0; width: 100%; background: var(--nav-bg); backdrop-filter: blur(10px); z-index: 1000; padding: 15px 0; border-bottom: 1px solid var(--border-color); }
-        .navbar { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.8rem; font-weight: 800; color: var(--text-main); }
-        .logo span { color: var(--primary-color); text-shadow: 0 0 10px var(--primary-glow); }
-        
-        .nav-links { display: flex; gap: 25px; align-items: center; }
-        .nav-links a { font-weight: 500; font-size: 0.95rem; color: var(--text-main); }
-        .nav-links a:not(.btn):hover { color: var(--primary-color); }
-        
-        /* Nav Icons */
-        .nav-icon-btn { background: transparent; border: 1px solid var(--border-color); color: var(--text-main); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s; }
-        .nav-icon-btn:hover { background: var(--primary-color); color: #fff; border-color: var(--primary-color); }
-        .nav-toggle { display: none; font-size: 1.5rem; color: var(--text-main); cursor: pointer; }
-
-        /* HERO */
-        .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding-top: 80px; position: relative; }
-        .hero-content { position: relative; z-index: 2; max-width: 900px; }
-        .hero-content h1 { font-size: 3.5rem; margin-bottom: 20px; color: var(--text-main); }
-        .typing-text { color: var(--primary-color); text-shadow: 0 0 15px var(--primary-glow); }
-        
-        .trust-badges { display: flex; justify-content: center; gap: 20px; margin-top: 40px; flex-wrap: wrap; }
-        .trust-item { background: var(--bg-glass); border: 1px solid var(--border-color); padding: 10px 25px; border-radius: 50px; font-size: 0.9rem; display: flex; align-items: center; gap: 10px; }
-        .trust-item i { color: var(--accent-color); }
-
-        /* ABOUT */
-        .about-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .about-card { padding: 40px; border-top: 4px solid var(--primary-color); transition: var(--transition); }
-        .about-card:hover { transform: translateY(-10px); }
-        .about-card i { color: var(--primary-color); font-size: 1.5rem; margin-right: 10px; }
-        .skills-container { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
-        .skill-tag { background: rgba(59, 130, 246, 0.1); color: var(--primary-color); padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; border: 1px solid rgba(59, 130, 246, 0.2); }
-
-        /* WORKFLOW */
-        .process-wrapper { position: relative; max-width: 900px; margin: 0 auto; }
-        .process-line { position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; background: var(--border-color); transform: translateX(-50%); }
-        .process-step { display: flex; justify-content: space-between; align-items: center; margin-bottom: 60px; position: relative; }
-        .process-step:nth-child(even) { flex-direction: row-reverse; }
-        .step-icon { width: 50px; height: 50px; background: var(--bg-body); border: 4px solid var(--primary-color); border-radius: 50%; position: absolute; left: 50%; transform: translateX(-50%); z-index: 2; display: flex; align-items: center; justify-content: center; font-weight: bold; color: var(--text-main); box-shadow: 0 0 15px var(--primary-glow); }
-        .step-content { width: 45%; padding: 30px; position: relative; }
-
-        /* PROJECTS (SQUARE GRID) */
-        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
-        .project-card { border-radius: 20px; overflow: hidden; transition: var(--transition); display: flex; flex-direction: column; }
-        .project-card:hover { transform: translateY(-8px); border-color: var(--primary-color); }
-        .client-img-wrapper { height: 250px; overflow: hidden; position: relative; cursor: pointer; }
-        .client-img-wrapper img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: 0.5s; }
-        .project-card:hover .client-img-wrapper img { transform: scale(1.05); }
-        .project-content { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
-        .client-badge { position: absolute; top: 15px; right: 15px; background: var(--accent-color); color: white; padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
-
-        /* TESTIMONIALS & PRICING */
-        .testimonial-card { padding: 40px; text-align: center; }
-        .stars { color: #f59e0b; margin-bottom: 15px; }
-        
-        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .price-card { padding: 40px; position: relative; transition: var(--transition); display: flex; flex-direction: column; }
-        .price-card:hover { transform: translateY(-10px); border-color: var(--primary-color); }
-        .price-card.featured { border: 2px solid var(--primary-color); transform: scale(1.05); z-index: 2; box-shadow: 0 0 30px rgba(59, 130, 246, 0.15); }
-        .price-amount { font-size: 3rem; font-weight: 700; color: var(--primary-color); margin: 20px 0; text-shadow: 0 0 15px var(--primary-glow); }
-        .price-features { margin-bottom: 20px; }
-        .price-features li { color: var(--text-muted); margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
-
-        /* FAQ */
-        .faq-item { margin-bottom: 15px; border-radius: 10px; overflow: hidden; }
-        .faq-question { padding: 20px; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; color: var(--text-main); }
-        .faq-question:hover { color: var(--primary-color); }
-        .faq-answer { padding: 0 20px; max-height: 0; overflow: hidden; transition: 0.3s ease; color: var(--text-muted); }
-        .faq-item.active .faq-answer { padding: 20px; max-height: 200px; border-top: 1px solid var(--border-color); }
-
-        /* CONTACT - SPLIT LAYOUT */
-        .contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 40px; }
-        .contact-left-col { display: flex; flex-direction: column; gap: 25px; }
-        
-        .contact-info-card { padding: 30px; }
-        .info-item { display: flex; align-items: center; margin-bottom: 20px; }
-        .info-item i { width: 45px; height: 45px; background: rgba(59, 130, 246, 0.1); color: var(--primary-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; }
-        
-        .quick-btn-group { display: flex; flex-direction: column; gap: 15px; }
-        .quick-btn { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid var(--primary-color); color: var(--primary-color); background: transparent; font-weight: 600; cursor: pointer; transition: 0.3s; }
-        .quick-btn:hover { background: var(--primary-color); color: white; }
-
-        .payment-qr { text-align: center; padding: 20px; background: rgba(59, 130, 246, 0.05); border-radius: 15px; border: 1px dashed var(--primary-color); margin-top: 10px; }
-        .qr-content { display: none; margin-top: 15px; animation: fadeIn 0.3s; }
-        .qr-content.show { display: block; }
-        .qr-img { max-width: 150px; border-radius: 10px; margin-bottom: 10px; border: 3px solid white; margin: 0 auto; }
-        
-        .quick-form-panel { display: none; margin-top: 15px; padding: 15px; background: var(--bg-body); border-radius: 10px; border: 1px solid var(--border-color); }
-        .quick-form-panel.active { display: block; }
-
-        .main-form-card { padding: 40px; height: fit-content; }
-        .form-control { width: 100%; padding: 15px; border: 1px solid var(--border-color); border-radius: 10px; background: var(--bg-body); color: var(--text-main); transition: 0.3s; margin-bottom: 20px; font-family: inherit; }
-        .form-control:focus { border-color: var(--primary-color); outline: none; box-shadow: 0 0 10px rgba(59, 130, 246, 0.2); }
-
-        /* FOOTER & FLOATING */
-        footer { background: #020617; color: #94a3b8; padding: 80px 0 30px; position: relative; z-index: 2; border-top: 1px solid rgba(255,255,255,0.1); }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 50px; }
-        .footer-links a:hover { color: var(--primary-color); padding-left: 5px; }
-        .float-wa { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: #25d366; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 0 20px rgba(37, 211, 102, 0.4); z-index: 999; transition: 0.3s; }
-        .float-wa:hover { transform: scale(1.1); }
-
-        .image-modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); justify-content: center; align-items: center; padding: 20px; }
-        .image-modal img { max-width: 100%; max-height: 90vh; border-radius: 10px; }
-        .modal-close { position: absolute; top: 20px; right: 30px; color: #fff; font-size: 40px; cursor: pointer; }
-
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .reveal { opacity: 0; transform: translateY(30px); transition: all 1s ease; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-
-        @media (max-width: 991px) {
-            .contact-grid { grid-template-columns: 1fr; }
-            .hero-content h1 { font-size: 2.8rem; }
-            .price-card.featured { transform: scale(1); }
-        }
-
-        @media (max-width: 768px) {
-            .nav-toggle { display: block; }
-            .nav-links { 
-                position: absolute; top: 100%; left: 0; width: 100%; 
-                background: var(--nav-bg); backdrop-filter: blur(15px);
-                flex-direction: column; padding: 30px; 
-                border-bottom: 1px solid var(--border-color); 
-                transform: translateY(-150%); transition: 0.4s ease; z-index: 999;
-            }
-            .nav-links.active { transform: translateY(0); }
-            .nav-icon-btn { width: 100%; border-radius: 8px; justify-content: flex-start; padding: 0 20px; border: none; background: rgba(0,0,0,0.05); }
-            .nav-icon-btn span { display: inline-block; margin-left: 10px; font-weight: 600; }
-            .process-line { left: 20px; }
-            .step-icon { left: 20px; }
-            .process-step { flex-direction: column !important; align-items: flex-start; padding-left: 60px; }
-            .step-content { width: 100%; }
-        }
-    </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "WebFolio Studio",
+    "url": "https://rajpratham1.github.io/my-portfolio",
+    "email": "shrivastavapratham40@gmail.com",
+    "telephone": "+91-6200892887",
+    "logo": "https://rajpratham1.github.io/my-portfolio/assets/logo/webfolio-mark.svg"
+  }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="assets/logo/webfolio-mark.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
 </head>
-<body>
-    
-    <canvas id="tech-canvas"></canvas>
+<body class="theme-home">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html">Web<span>Folio</span></a>
+      <button type="button" class="nav-toggle" aria-label="Open menu">Menu</button>
+      <nav class="nav-links" aria-label="Primary">
+        <a data-nav href="index.html">Home</a>
+        <a data-nav href="about.html">About</a>
+        <a data-nav href="services.html">Services</a>
+        <a data-nav href="work.html">Work</a>
+        <a data-nav href="dedication.html">Dedication</a>
+        <a data-nav href="contact.html">Contact</a>
+<a data-nav href="hire.html" class="cta">Start Project</a>
+      </nav>
+      </div>
+  </header>
 
-    <header class="header">
-        <div class="container navbar">
-            <a href="#" class="logo">Web<span>Folio</span></a>
-            <div class="nav-toggle" id="navToggle"><i class="fas fa-bars"></i></div>
-            
-            <ul class="nav-links" id="navbarNav">
-                <li><a href="#home" data-key="nav_home">Home</a></li>
-                <li><a href="#about" data-key="nav_about">Agency</a></li>
-                <li><a href="#projects" data-key="nav_work">Projects</a></li>
-                <li><a href="#services" data-key="nav_service">Services</a></li>
-                <li><a href="#contact" data-key="nav_contact">Contact</a></li>
-                
-                <li>
-                    <button class="nav-icon-btn" id="themeToggle" title="Toggle Dark Mode">
-                        <i class="fas fa-moon"></i> <span class="mobile-only-text" style="display:none;">Dark Mode</span>
-                    </button>
-                </li>
-                <li>
-                    <button class="nav-icon-btn" id="langToggle" title="Switch Language">
-                        <i class="fas fa-language"></i> <span id="langText" style="display:none; font-size:0.9rem; font-weight:600; margin-left:5px;">HI</span>
-                        <span class="mobile-only-text" style="display:none;">Change Language</span>
-                    </button>
-                </li>
-                
-                <li><a href="https://rajpratham1.github.io/my-portfolio/" target="_blank" class="btn btn-primary" data-key="btn_pf">Portfolio</a></li>
-            </ul>
-        </div>
-    </header>
+  <main id="main" class="page-shell">
+    <section class="hero container">
+      <div class="hero-grid">
+        <article class="panel hero-copy reveal">
+          <p class="kicker">Digital Engineering Partner</p>
+          <h1>Bold websites with smooth motion and measurable business intent.</h1>
+          <p>If you need any type of website or Android APK, contact us. We design, develop, launch, and maintain digital products with long-term reliability. We are always happy to help you build the right solution.</p>
+          <div class="metrics">
+            <div class="metric"><b data-count="12" data-suffix=" pages">0</b><span>Live pages</span></div>
+            <div class="metric"><b data-count="96" data-suffix="/100">0</b><span>Mobile comfort score</span></div>
+            <div class="metric"><b data-count="250" data-suffix="ms">0</b><span>Interaction target</span></div>
+      </div>
+        </article>
+        <aside class="panel hero-art reveal" aria-hidden="true">
+          <div class="blob one"></div>
+          <div class="blob two"></div>
+          <div class="blob three"></div>
+          <div class="hero-tag">Every frame is tuned for speed, accessibility, and trust.</div>
+        </aside>
+      </div>
+    </section>
 
-    <main>
-        <section id="home" class="hero">
-            <div class="container hero-content">
-                <h1 id="heroTitle">We Engineer Digital <br> <span class="typing-text"></span></h1>
-                <p data-key="heroDesc">Welcome to WebFolio. Led by Pratham Kumar, we are a collective of engineering talent bridging the gap between vision and reality. We build high-performance, scalable, and secure digital solutions that drive business growth.</p>
-                
-                <div class="trust-badges">
-                    <div class="trust-item glass-card"><i class="fas fa-shield-alt"></i> <span data-key="badge_secure">Secure Payments</span></div>
-                    <div class="trust-item glass-card"><i class="fas fa-rocket"></i> <span data-key="badge_time">Fast Delivery</span></div>
-                    <div class="trust-item glass-card"><i class="fas fa-headset"></i> <span data-key="badge_support">24/7 Support</span></div>
-                </div>
+    <section class="section container reveal">
+      <h2>Focused Outcomes</h2>
+      <div class="grid-3">
+        <article class="card"><strong>Any Website Type</strong><p>Portfolio, business, agency, product, dashboard, or custom request. We create websites for your exact goals.</p></article>
+<article class="card"><strong>Android Application Development</strong><p>We design and develop Android APK applications for startups, services, operations, and brand platforms with scalable architecture and smooth mobile UX.</p></article>
+<article class="card"><strong>Maintenance and Support</strong><p>After launch, we continue with fixes, speed optimization, content updates, and monthly maintenance support.</p></article>
+      </div>
+    </section>
 
-                <div class="hero-buttons" style="margin-top:40px;">
-                    <a href="#projects" class="btn btn-primary" data-key="btn_work">View Case Studies</a>
-                    <a href="#contact" class="btn btn-outline" data-key="btn_contact">Start Your Project</a>
-                </div>
-            </div>
-        </section>
+    <section class="section container reveal">
+      <h2>How We Work</h2>
+      <div class="process-grid">
+        <article class="process-card">
+          <span class="step-no">01</span>
+          <h3>Discovery Sprint</h3>
+          <p>We map your audience, goals, and page priorities before design decisions start.</p>
+        </article>
+        <article class="process-card">
+          <span class="step-no">02</span>
+          <h3>Wire + Motion Blueprint</h3>
+          <p>Layout structure and animation behavior are locked together for cleaner UX flow.</p>
+        </article>
+        <article class="process-card">
+          <span class="step-no">03</span>
+          <h3>Build + QA</h3>
+          <p>Development includes responsiveness, accessibility checks, and cross-device tests.</p>
+        </article>
+        <article class="process-card">
+          <span class="step-no">04</span>
+          <h3>Launch + Improve</h3>
+          <p>After release, we monitor engagement and refine key sections for better conversion.</p>
+        </article>
+      </div>
+    </section>
 
-        <section id="about" class="section-padding">
-            <div class="container">
-                <div class="text-center reveal">
-                    <h2 data-key="title_about">Our Expertise</h2>
-                    <p class="section-subtitle" data-key="sub_about">We combine academic rigor with industry standards.</p>
-                </div>
+    <section class="section container reveal">
+      <h2>Work Standards</h2>
+      <div class="timeline">
+        <div class="step"><strong>Dedication First</strong><p>Every section is reviewed for spacing, readability, and intent before finalizing.</p></div>
+        <div class="step"><strong>Performance Discipline</strong><p>Animations are optimized to stay smooth and stable across device types.</p></div>
+        <div class="step"><strong>Comfort On Every Screen</strong><p>Mobile, tablet, and desktop layouts are tuned for effortless scanning and interaction.</p></div>
+      </div>
+      <div class="cta-band panel">
+        <p>Tagline: We create. We develop. We maintain. We are happy to help.</p>
+        <a class="cta" href="hire.html">Start a Project</a>
+      </div>
+    </section>
 
-                <div class="about-grid reveal">
-                    <div class="about-card glass-card">
-                        <h3><i class="fas fa-code-branch"></i> <span data-key="card1_title">Engineering DNA</span></h3>
-                        <p data-key="card1_desc">We are not just designers; we are Full Stack Engineers from Invertis University. We understand data structures, algorithms, and system architecture.</p>
-                    </div>
+    <section class="section container reveal">
+      <h2>What We Build For You</h2>
+      <div class="long-text-grid">
+        <article class="card">
+          <strong>Website Development</strong>
+          <p>From basic informational websites to advanced multi-page platforms, every build is responsive and conversion-ready.</p>
+          <p>We keep your site readable, fast, and comfortable across mobile, tablet, and desktop devices.</p>
+        </article>
+        <article class="card">
+          <strong>Android APK Solutions</strong>
+          <p>If your users need app-first access, we can plan and deliver Android APK workflows aligned with your business model.</p>
+          <p>We focus on practical features, smooth user flow, and strong visual quality.</p>
+        </article>
+        <article class="card">
+          <strong>Maintenance Services</strong>
+          <p>Websites need care after launch. We provide bug fixes, performance updates, content refreshes, and design improvements.</p>
+          <p>This keeps your brand modern, secure, and reliable over time.</p>
+        </article>
+        <article class="card">
+          <strong>Always Ready To Support</strong>
+          <p>Need a quick change or a full new feature? Share your requirement and we will guide you with clear, honest recommendations.</p>
+          <p>We are happy to help, whether your project is small, medium, or large.</p>
+        </article>
+      </div>
+    </section>
 
-                    <div class="about-card glass-card">
-                        <h3><i class="fas fa-layer-group"></i> <span data-key="card2_title">Tech Stack</span></h3>
-                        <div class="skills-container">
-                            <span class="skill-tag">React.js</span>
-                            <span class="skill-tag">Node.js</span>
-                            <span class="skill-tag">Java Backend</span>
-                            <span class="skill-tag">MongoDB</span>
-                            <span class="skill-tag">AWS Cloud</span>
-                            <span class="skill-tag">Python AI</span>
-                        </div>
-                    </div>
+    <section class="section container reveal">
+      <h2>Our Story</h2>
+      <div class="story-grid">
+        <article class="panel story-copy">
+          <p class="kicker">From Idea To Impact</p>
+          <h3>We build websites and Android applications that businesses are proud to show.</h3>
+          <p>WebFolio started with one mission: transform business ideas into premium digital products that look credible and perform in the real world. Today, we operate with <strong>6+ active developers</strong> across design, frontend, backend, and Android application development.</p>
+          <p>We focus on delivery quality, clean architecture, and smooth user experience. From landing pages to full business platforms and APK products, each build is engineered for trust, growth, and long-term maintainability.</p>
+          <div class="story-badges">
+            <span>6+ Active Developers</span>
+            <span>Website + APK Delivery</span>
+            <span>Maintenance First</span>
+      </div>
+          <div class="story-actions">
+            <a class="cta" href="about.html">Read More About Us</a>
+            <a class="cta" href="contact.html">Contact Us</a>
+      </div>
+          <p>Portfolio Link: <a href="https://rajpratham1.github.io/my-portfolio/" target="_blank" rel="noopener noreferrer">https://rajpratham1.github.io/my-portfolio/</a></p>
+          <div class="direct-url">
+            <p>Direct Connect URL:</p>
+            <code>https://rajpratham1.github.io/my-portfolio/contact.html</code>
+      </div>
+        </article>
+        <div class="story-side">
+          <figure class="story-image">
+            <img src="s2.jpg" alt="WebFolio team collaboration visual" width="1080" height="2412" loading="lazy" decoding="async">
+          </figure>
+          <div class="founder-card">
+            <img class="founder-avatar" src="https://avatars.githubusercontent.com/rajpratham1?v=4" alt="Founder profile from GitHub" width="240" height="240" loading="lazy" decoding="async">
+            <div class="founder-meta">
+              <strong>Founder: Pratham Kumar</strong>
+              <small>GitHub: <a href="https://github.com/rajpratham1" target="_blank" rel="noopener noreferrer">github.com/rajpratham1</a></small>
+      </div>
+      </div>
+      </div>
+      </div>
+    </section>
 
-                    <div class="about-card glass-card">
-                        <h3><i class="fas fa-chart-line"></i> <span data-key="card3_title">Proven Track Record</span></h3>
-                        <p data-key="card3_desc">From deploying machine learning models to building secure crime reporting portals, our portfolio proves our capability.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <section class="section container reveal">
+      <h2>Trust Building Highlights</h2>
+      <div class="trust-gallery">
+        <article class="trust-shot">
+          <img src="s1.jpg" alt="Client project quality preview" width="1080" height="2412" loading="lazy" decoding="async">
+          <p>Real project-quality interface blocks with performance-focused implementation.</p>
+        </article>
+        <article class="trust-shot">
+          <img src="s2.jpg" alt="Professional workflow and design consistency" width="1080" height="2412" loading="lazy" decoding="async">
+          <p>Consistent structure and polished UX patterns for long-term maintainability.</p>
+        </article>
+        <article class="trust-shot">
+          <img src="s3.png" alt="Application and dashboard development expertise" width="1080" height="2412" loading="lazy" decoding="async">
+          <p>Website + Android application capability under one development partner.</p>
+        </article>
+      </div>
+      <div class="primary-cta-bar">
+        <p>Need to discuss your website or Android APK requirement directly?</p>
+        <a class="cta" href="contact.html">Open Contact Page</a>
+      </div>
+    </section>
 
-        <section id="process" class="section-padding">
-            <div class="container">
-                <div class="text-center reveal">
-                    <h2 data-key="title_process">Development Process</h2>
-                    <p class="section-subtitle" data-key="sub_process">A transparent, agile methodology to ensure your success.</p>
-                </div>
+    <section class="section container reveal">
+      <h2>Android APK Applications</h2>
+      <div class="apk-showcase">
+        <article class="panel apk-info">
+          <p class="kicker">Mobile App Showcase</p>
+          <h3>Professional Android apps designed for real business use.</h3>
+          <p>We build Android APK solutions that are fast, clean, and purpose-driven. From service apps to internal utility tools, every app is optimized for usability and consistent brand experience.</p>
+          <ul class="apk-points">
+            <li>UI designed for one-hand mobile comfort and clear action flow</li>
+            <li>Lightweight performance and stable behavior on mid-range devices</li>
+            <li>Scalable structure so features can be extended in future updates</li>
+            <li>Maintenance support for bug fixes, updates, and new app modules</li>
+          </ul>
+          <div class="primary-cta-bar">
+            <p>Need website + Android APK package for your business?</p>
+            <a class="cta" href="contact.html">Get Proposal</a>
+      </div>
+          <div class="direct-url">
+            <p>Portfolio Preview:</p>
+            <code>https://rajpratham1.github.io/my-portfolio/</code>
+      </div>
+        </article>
+        <div class="apk-grid">
+          <article class="apk-card">
+            <div class="apk-top"><strong>Client Connect App</strong><span class="chip">Service</span></div>
+            <p>Lead capture, booking requests, and support ticket flow integrated in one APK.</p>
+            <div class="apk-specs"><span>Material UI</span><span>API Ready</span><span>Push Ready</span></div>
+            <div class="mobile-mock">
+              <div class="phone-frame"><div class="phone-notch"></div><div class="phone-ui"><div class="hero-line"></div><div class="line"></div><div class="line"></div><div class="grid-mini"></div></div></div>
+      </div>
+          </article>
+          <article class="apk-card">
+            <div class="apk-top"><strong>Sales Tracker</strong><span class="chip">Business</span></div>
+            <p>Sales activity dashboard with pipeline status and mobile quick updates.</p>
+            <div class="apk-specs"><span>Charts</span><span>Auth</span><span>Reports</span></div>
+            <div class="mobile-mock">
+              <div class="phone-frame"><div class="phone-notch"></div><div class="phone-ui"><div class="hero-line"></div><div class="line"></div><div class="grid-mini"></div><div class="line"></div></div></div>
+      </div>
+          </article>
+          <article class="apk-card">
+            <div class="apk-top"><strong>Field Staff App</strong><span class="chip">Operations</span></div>
+            <p>Task assignment, attendance, and location-based updates for field teams.</p>
+            <div class="apk-specs"><span>Geo Ready</span><span>Daily Tasks</span><span>Sync</span></div>
+            <div class="mobile-mock">
+              <div class="phone-frame"><div class="phone-notch"></div><div class="phone-ui"><div class="hero-line"></div><div class="grid-mini"></div><div class="line"></div><div class="line"></div></div></div>
+      </div>
+          </article>
+          <article class="apk-card">
+            <div class="apk-top"><strong>Portfolio Lite App</strong><span class="chip">Brand</span></div>
+            <p>Personal brand app to showcase services, projects, and contact actions.</p>
+            <div class="apk-specs"><span>Fast Load</span><span>Modern UI</span><span>Lead Flow</span></div>
+            <div class="mobile-mock">
+              <div class="phone-frame"><div class="phone-notch"></div><div class="phone-ui"><div class="hero-line"></div><div class="line"></div><div class="grid-mini"></div><div class="line"></div></div></div>
+      </div>
+          </article>
+      </div>
+      </div>
+    </section>
+  </main>
 
-                <div class="process-wrapper reveal">
-                    <div class="process-line"></div>
-                    
-                    <div class="process-step">
-                        <div class="step-icon">01</div>
-                        <div class="step-content glass-card">
-                            <h4 data-key="step1_title">Strategy</h4>
-                            <p data-key="step1_desc">We deep-dive into your requirements to create a perfect roadmap.</p>
-                        </div>
-                    </div>
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <h3>WebFolio Studio</h3>
+        <p>Purpose-built websites with clean engineering, bold motion, and reliable delivery.</p>
+        <small>Copyright <span id="year"></span> WebFolio</small>
+      </div>
+      <div class="footer-links">
+        <a data-nav href="index.html">Home</a>
+        <a data-nav href="about.html">About</a>
+        <a data-nav href="services.html">Services</a>
+        <a data-nav href="work.html">Work</a>
+        <a data-nav href="dedication.html">Dedication</a>
+        <a data-nav href="process.html">Process</a>
+        <a data-nav href="showcase.html">Showcase</a>
+        <a data-nav href="testimonials.html">Testimonials</a>
+        <a data-nav href="pricing.html">Pricing</a>
+        <a data-nav href="faq.html">FAQ</a>
+        <a data-nav href="contact.html">Contact</a>
+        <a data-nav href="hire.html">Hire</a>
+        <a data-nav href="privacy.html">Privacy</a>
+        <a data-nav href="changelog.html">Changelog</a>
+        <a data-nav href="terms.html">Terms</a>
+      </div>
+      </div>
+  </footer>
 
-                    <div class="process-step">
-                        <div class="step-icon">02</div>
-                        <div class="step-content glass-card">
-                            <h4 data-key="step2_title">Design & Dev</h4>
-                            <p data-key="step2_desc">Our engineers build architecture while designers craft the UI/UX.</p>
-                        </div>
-                    </div>
-
-                    <div class="process-step">
-                        <div class="step-icon">03</div>
-                        <div class="step-content glass-card">
-                            <h4 data-key="step3_title">Deployment</h4>
-                            <p data-key="step3_desc">We launch your site on secure cloud servers and set up domains.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="projects" class="section-padding">
-            <div class="container">
-                <div class="text-center reveal">
-                    <h2 data-key="title_projects">Featured Case Studies</h2>
-                    <p class="section-subtitle" data-key="sub_projects">Explore how we solve problems with code.</p>
-                </div>
-
-                <div class="project-grid reveal">
-                    <div class="project-card glass-card">
-                        <div class="project-content">
-                            <h4>Mediscan AI</h4>
-                            <p data-key="proj1_desc">HealthTech web app using Flask and AI to detect breast cancer with high accuracy.</p>
-                            <a href="https://cancerdetction.vercel.app" target="_blank" class="btn btn-outline text-center">View Live Demo</a>
-                        </div>
-                    </div>
-
-                    <div class="project-card glass-card">
-                        <div class="project-content">
-                            <h4>CrimePortal</h4>
-                            <p data-key="proj2_desc">Secure, encrypted platform for anonymous crime reporting and case management.</p>
-                            <a href="https://crimeportal-mu.vercel.app/team" target="_blank" class="btn btn-outline text-center">View System</a>
-                        </div>
-                    </div>
-
-                    <div class="project-card glass-card">
-                        <div class="project-content">
-                            <h4>Cyber Threat Intel</h4>
-                            <p data-key="proj3_desc">Real-time data visualization dashboard tracking global cyber attacks.</p>
-                            <a href="https://cyber-threat-intelligence-z8lc.onrender.com" target="_blank" class="btn btn-outline text-center">View Dashboard</a>
-                        </div>
-                    </div>
-
-                    <div class="project-card glass-card">
-                        <div class="project-content">
-                            <h4>Aether Tools</h4>
-                            <p data-key="proj4_desc">Versatile utility suite featuring environmental monitoring and productivity tools.</p>
-                            <a href="https://rajpratham1.github.io/Aether-Tools/" target="_blank" class="btn btn-outline text-center">View Tools</a>
-                        </div>
-                    </div>
-                    
-                    <div class="project-card glass-card">
-                        <div class="project-content">
-                            <h4>Disaster Ready Campus</h4>
-                            <p data-key="proj5_desc">Hackathon project designed to streamline emergency responses in universities.</p>
-                            <a href="https://disaster-ready-campus.onrender.com" target="_blank" class="btn btn-outline text-center">View Project</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="client-feedback" class="section-padding">
-            <div class="container">
-                <div class="text-center reveal">
-                    <h2 data-key="title_clients">Client Deliveries</h2>
-                    <p class="section-subtitle" data-key="sub_clients">Successful projects delivered to happy clients.</p>
-                </div>
-
-                <div class="project-grid reveal">
-                    
-                    <div class="project-card glass-card">
-                        <div class="client-img-wrapper" onclick="openImageModal('https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop')">
-                            <span class="client-badge"><i class="fas fa-check-circle"></i> Delivered</span>
-                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=500&auto=format&fit=crop" alt="BilloraX Platform">
-                        </div>
-                        <div class="project-content">
-                            <h4>BilloraX</h4>
-                            <p>Advanced billing & inventory management system with automated invoicing and stock tracking.</p>
-                            <a href="https://billorax.vercel.app/" target="_blank" class="btn btn-outline text-center">View Live Site</a>
-                        </div>
-                    </div>
-                    <div class="project-card glass-card">
-                        <div class="client-img-wrapper" onclick="openImageModal('s1.png')">
-                            <span class="client-badge"><i class="fas fa-check-circle"></i> Delivered</span>
-                            <img src="s1.jpg" alt="Sunrise Poultry Website">
-                        </div>
-                        <div class="project-content">
-                            <h4>Sunrise-Polutry</h4>
-                            <p>Complete business website solution.</p>
-                            <a href="https://rajpratham1.github.io/Sunrise-Polutry/" target="_blank" class="btn btn-outline text-center">View Live Site</a>
-                        </div>
-                    </div>
-
-                    <div class="project-card glass-card">
-                        <div class="client-img-wrapper" onclick="openImageModal('s2.jpg')">
-                            <span class="client-badge"><i class="fas fa-check-circle"></i> Delivered</span>
-                            <img src="s2.jpg" alt="Ujjawal Portfolio">
-                        </div>
-                        <div class="project-content">
-                            <h4>Portfolio (Ujjawal)</h4>
-                            <p>Professional CV and portfolio website.</p>
-                            <a href="https://rajpratham1.github.io/ujjawal-cv-/" target="_blank" class="btn btn-outline text-center">View Live Site</a>
-                        </div>
-                    </div>
-
-                    <div class="project-card glass-card">
-                        <div class="client-img-wrapper" onclick="openImageModal('s3.png')">
-                            <span class="client-badge"><i class="fas fa-check-circle"></i> Delivered</span>
-                            <img src="s3.png" alt="Bihari Rasoi Website">
-                        </div>
-                        <div class="project-content">
-                            <h4>Bihari-Rasoi</h4>
-                            <p>Restaurant business website.</p>
-                            <a href="https://rajpratham1.github.io/Bihari-Rasoi/" target="_blank" class="btn btn-outline text-center">View Live Site</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="testimonials" class="section-padding">
-            <div class="container">
-                <div class="text-center reveal">
-                    <h2 data-key="title_testi">What Clients Say</h2>
-                    <p class="section-subtitle">Don't just take our word for it.</p>
-                </div>
-                <div class="pricing-grid reveal">
-                    <div class="testimonial-card glass-card">
-                        <div class="stars">⭐⭐⭐⭐⭐</div>
-                        <p data-key="testi1">"WebFolio delivered our poultry business website exactly as we imagined. Professional and on time!"</p>
-                        <h5 style="margin-top:15px; color:var(--primary-color);">- Manager, Sunrise Poultry</h5>
-                    </div>
-                    <div class="testimonial-card glass-card">
-                        <div class="stars">⭐⭐⭐⭐⭐</div>
-                        <p data-key="testi2">"The best part was the communication. They understood my portfolio requirements perfectly."</p>
-                        <h5 style="margin-top:15px; color:var(--primary-color);">- Ujjawal</h5>
-                    </div>
-                    <div class="testimonial-card glass-card">
-                        <div class="stars">⭐⭐⭐⭐⭐</div>
-                        <p data-key="testi3">"Great technical skills. The restaurant site is fast and looks great on mobile."</p>
-                        <h5 style="margin-top:15px; color:var(--primary-color);">- Owner, Bihari Rasoi</h5>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="services" class="section-padding">
-            <div class="container">
-                <div class="text-center reveal">
-                    <h2 data-key="title_services">Investment Plans</h2>
-                    <p class="section-subtitle" data-key="sub_services">Transparent pricing for premium quality.</p>
-                </div>
-
-                <div class="pricing-grid reveal">
-                    <div class="price-card glass-card">
-                        <div class="price-header">
-                            <h4 data-key="price1_title">Starter Web</h4>
-                            <div class="price-amount">₹1k - ₹3k</div>
-                            <p data-key="price1_desc">Landing pages & profiles.</p>
-                        </div>
-                        <ul class="price-features">
-                            <li><i class="fas fa-check"></i> 1-3 Responsive Pages</li>
-                            <li><i class="fas fa-check"></i> Contact Form</li>
-                            <li><i class="fas fa-check"></i> Basic SEO</li>
-                        </ul>
-                        <a href="#contact" class="btn btn-outline text-center">Select Plan</a>
-                    </div>
-
-                    <div class="price-card glass-card featured">
-                        <div class="price-header">
-                            <h4 data-key="price2_title">Professional</h4>
-                            <div class="price-amount">₹2k - ₹5k</div>
-                            <p data-key="price2_desc">Portfolios & Businesses.</p>
-                        </div>
-                        <ul class="price-features">
-                            <li><i class="fas fa-check"></i> 5 Premium Pages</li>
-                            <li><i class="fas fa-check"></i> Interactive Animations</li>
-                            <li><i class="fas fa-check"></i> Social Media Links</li>
-                        </ul>
-                        <a href="#contact" class="btn btn-primary text-center">Most Popular</a>
-                    </div>
-
-                    <div class="price-card glass-card">
-                        <div class="price-header">
-                            <h4 data-key="price3_title">Enterprise</h4>
-                            <div class="price-amount">₹4k+</div>
-                            <p data-key="price3_desc">Full dynamic applications.</p>
-                        </div>
-                        <ul class="price-features">
-                            <li><i class="fas fa-check"></i> Database (MongoDB)</li>
-                            <li><i class="fas fa-check"></i> Admin Dashboard</li>
-                            <li><i class="fas fa-check"></i> User Auth</li>
-                        </ul>
-                        <a href="#contact" class="btn btn-outline text-center">Select Plan</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="faq" class="section-padding">
-            <div class="container">
-                <div class="text-center reveal">
-                    <h2 data-key="title_faq">Frequently Asked Questions</h2>
-                    <p class="section-subtitle" data-key="sub_faq">Common questions answered.</p>
-                </div>
-                <div class="faq-container reveal" style="max-width: 800px; margin: 0 auto;">
-                    <div class="faq-item glass-card">
-                        <div class="faq-question"><span data-key="faq1_q">Do I need to pay for Hosting & Domain separately?</span> <i class="fas fa-chevron-down"></i></div>
-                        <div class="faq-answer" data-key="faq1_a">Yes, domain and hosting costs are separate. However, we can help you buy and set them up for free as part of the service.</div>
-                    </div>
-                    <div class="faq-item glass-card">
-                        <div class="faq-question"><span data-key="faq2_q">How long does it take to build a website?</span> <i class="fas fa-chevron-down"></i></div>
-                        <div class="faq-answer" data-key="faq2_a">A basic website takes 3-5 days. A complex business website or portfolio takes about 7-10 days depending on requirements.</div>
-                    </div>
-                    <div class="faq-item glass-card">
-                        <div class="faq-question"><span data-key="faq3_q">Do you provide support after delivery?</span> <i class="fas fa-chevron-down"></i></div>
-                        <div class="faq-answer" data-key="faq3_a">Yes! All plans come with free support for 1 month to fix any small issues or bugs.</div>
-                    </div>
-                    <div class="faq-item glass-card">
-                        <div class="faq-question"><span data-key="faq4_q">Is my payment secure?</span> <i class="fas fa-chevron-down"></i></div>
-                        <div class="faq-answer" data-key="faq4_a">Absolutely. We use standard UPI apps (Paytm, PhonePe, GPay). You only pay 50% advance to start, and the rest after seeing the work.</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="section-padding">
-            <div class="container">
-                <div class="text-center reveal">
-                    <h2 data-key="title_contact">Get In Touch</h2>
-                    <p class="section-subtitle" data-key="sub_contact">Ready to elevate your digital presence?</p>
-                </div>
-
-                <div class="contact-grid reveal">
-                    <div class="contact-left-col">
-                        <div class="contact-info-card glass-card">
-                            <div class="info-item">
-                                <i class="fas fa-phone-alt"></i>
-                                <div><h5>Phone</h5><a href="tel:+916200892887">+91 6200892887</a></div>
-                            </div>
-                            <div class="info-item">
-                                <i class="fas fa-envelope"></i>
-                                <div><h5>Email</h5><a href="mailto:rajpratham40@gmail.com">rajpratham40@gmail.com</a></div>
-                            </div>
-                            <div class="info-item">
-                                <i class="fab fa-whatsapp"></i>
-                                <div><h5>WhatsApp</h5><a href="https://wa.me/916200892887">Chat Now</a></div>
-                            </div>
-                            <div class="info-item">
-                                <i class="fab fa-linkedin"></i>
-                                <div><h5>LinkedIn</h5><a href="https://www.linkedin.com/in/pratham-kumar-2a4b151a7">View Profile</a></div>
-                            </div>
-                        </div>
-
-                        <div class="glass-card" style="padding: 20px; margin-top: 20px;">
-                            <h4 style="font-size:1.1rem; margin-bottom:15px;">Quick Inquiry</h4>
-                            <div class="quick-btn-group">
-                                <button class="quick-btn" onclick="toggleForm('quick-gen')">General Query</button>
-                                <form action="https://formspree.io/f/xvgrnpyb" method="POST" id="quick-gen" class="quick-form-panel">
-                                    <input type="text" name="name" placeholder="Name" class="quick-input" required>
-                                    <input type="email" name="_replyto" placeholder="Email" class="quick-input" required>
-                                    <textarea name="message" placeholder="Message..." class="quick-input" rows="2"></textarea>
-                                    <button type="submit" class="btn btn-primary" style="font-size:0.8rem; width:100%;">Send</button>
-                                    <p class="form-status" style="display:none; font-size: 0.8rem; margin-top: 10px;"></p>
-                                </form>
-
-                                <button class="quick-btn" onclick="toggleForm('quick-fee')">Fee Inquiry</button>
-                                <form action="https://formspree.io/f/xrbkvzdo" method="POST" id="quick-fee" class="quick-form-panel">
-                                    <input type="text" name="name" placeholder="Name" class="quick-input" required>
-                                    <input type="email" name="_replyto" placeholder="Email" class="quick-input" required>
-                                    <textarea name="message" placeholder="Budget/Project..." class="quick-input" rows="2"></textarea>
-                                    <button type="submit" class="btn btn-primary" style="font-size:0.8rem; width:100%;">Send</button>
-                                    <p class="form-status" style="display:none; font-size: 0.8rem; margin-top: 10px;"></p>
-                                </form>
-                            </div>
-                        </div>
-
-                        <div class="payment-qr glass-card">
-                            <h5 style="margin-bottom:10px;">Advance Payment</h5>
-                            <button class="btn btn-outline" style="width:100%; font-size:0.8rem;" onclick="document.getElementById('qrContent').classList.toggle('show')"><i class="fas fa-qrcode"></i> Show/Hide QR</button>
-                            <div id="qrContent" class="qr-content">
-                                <img src="paytm qr.jpg" alt="UPI QR" class="qr-img">
-                                <a href="upi://pay?pa=6200892887@ptyes&pn=Pratham%20Kumar" class="btn btn-primary" style="font-size:0.8rem; width:100%;">Pay via App</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="main-form-card glass-card">
-                        <h3>Detailed Project Request</h3>
-                        <p style="margin-bottom:20px; color:var(--text-muted);">Tell us about your project in detail.</p>
-                        <form id="detailedForm" action="https://formspree.io/f/mpwreabr" method="POST">
-                            <div class="form-group">
-                                <label>Your Name</label>
-                                <input type="text" name="name" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Your Email</label>
-                                <input type="email" name="_replyto" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Subject</label>
-                                <input type="text" name="_subject" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Message</label>
-                                <textarea name="message" class="form-control" rows="5" required></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary" style="width:100%;">Send Message</button>
-                            <p id="detailedStatus" style="display:none; text-align:center; margin-top:10px;"></p>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <a href="#" class="logo">Web<span>Folio</span></a>
-                    <p style="margin-top:20px;">Delivering excellence in web development and technical solutions.</p>
-                </div>
-                <div class="footer-col">
-                    <h4>Quick Links</h4>
-                    <div class="footer-links">
-                        <a href="#home">Home</a>
-                        <a href="#projects">Projects</a>
-                        <a href="#contact">Contact</a>
-                    </div>
-                </div>
-                <div class="footer-col">
-                    <h4>Connect</h4>
-                    <div class="footer-socials">
-                        <a href="https://github.com/rajpratham1"><i class="fab fa-github"></i></a>
-                        <a href="https://www.linkedin.com/in/pratham-kumar-2a4b151a7"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://x.com/prathamshriva18"><i class="fab fa-twitter"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom"><p>&copy; <span id="year"></span> WebFolio. All rights reserved.</p></div>
-        </div>
-    </footer>
-
-    <a href="https://wa.me/916200892887" class="float-wa" target="_blank"><i class="fab fa-whatsapp"></i></a>
-
-    <div id="imageModal" class="image-modal">
-        <span class="modal-close" onclick="closeImageModal()">&times;</span>
-        <img id="modalImg" src="">
-    </div>
-
-    <script>
-        // 3D PARTICLE BACKGROUND LOGIC
-        const canvas = document.getElementById('tech-canvas');
-        const ctx = canvas.getContext('2d');
-        let particlesArray;
-
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        let mouse = { x: null, y: null, radius: (canvas.height/80) * (canvas.width/80) };
-
-        window.addEventListener('mousemove', function(event) {
-            mouse.x = event.x;
-            mouse.y = event.y;
-        });
-
-        class Particle {
-            constructor(x, y, directionX, directionY, size, color) {
-                this.x = x; this.y = y;
-                this.directionX = directionX; this.directionY = directionY;
-                this.size = size; this.color = color;
-            }
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
-                ctx.fillStyle = document.body.classList.contains('dark-mode') ? '#3b82f6' : '#94a3b8';
-                ctx.fill();
-            }
-            update() {
-                if (this.x > canvas.width || this.x < 0) this.directionX = -this.directionX;
-                if (this.y > canvas.height || this.y < 0) this.directionY = -this.directionY;
-                this.x += this.directionX;
-                this.y += this.directionY;
-                this.draw();
-            }
-        }
-
-        function init() {
-            particlesArray = [];
-            let numberOfParticles = (canvas.height * canvas.width) / 9000;
-            for (let i = 0; i < numberOfParticles; i++) {
-                let size = (Math.random() * 3) + 1;
-                let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
-                let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
-                let directionX = (Math.random() * 2) - 1;
-                let directionY = (Math.random() * 2) - 1;
-                let color = '#3b82f6';
-                particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
-            }
-        }
-
-        function animate() {
-            requestAnimationFrame(animate);
-            ctx.clearRect(0, 0, innerWidth, innerHeight);
-            for (let i = 0; i < particlesArray.length; i++) {
-                particlesArray[i].update();
-            }
-            connect();
-        }
-
-        function connect() {
-            let opacityValue = 1;
-            for (let a = 0; a < particlesArray.length; a++) {
-                for (let b = a; b < particlesArray.length; b++) {
-                    let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x)) + 
-                                  ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
-                    if (distance < (canvas.width/7) * (canvas.height/7)) {
-                        opacityValue = 1 - (distance/20000);
-                        ctx.strokeStyle = document.body.classList.contains('dark-mode') ? 'rgba(59, 130, 246,' + opacityValue + ')' : 'rgba(148, 163, 184,' + opacityValue + ')';
-                        ctx.lineWidth = 1;
-                        ctx.beginPath();
-                        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
-                        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
-                        ctx.stroke();
-                    }
-                }
-            }
-        }
-
-        window.addEventListener('resize', function() {
-            canvas.width = innerWidth;
-            canvas.height = innerHeight;
-            init();
-        });
-
-        init();
-        animate();
-
-        // UI INTERACTION SCRIPTS
-        document.addEventListener('DOMContentLoaded', () => {
-            // NAV LOGIC
-            const navToggle = document.getElementById('navToggle');
-            const navBarNav = document.getElementById('navbarNav');
-            
-            navToggle.addEventListener('click', () => {
-                navBarNav.classList.toggle('active');
-                if(window.innerWidth <= 768) {
-                    document.querySelectorAll('.mobile-only-text').forEach(el => el.style.display = 'inline-block');
-                }
-            });
-
-            document.querySelectorAll('.nav-links a:not(.btn)').forEach(link => {
-                link.addEventListener('click', () => navBarNav.classList.remove('active'));
-            });
-
-            // SCROLL REVEAL
-            window.addEventListener('scroll', () => {
-                document.querySelectorAll(".reveal").forEach(el => {
-                    if(el.getBoundingClientRect().top < window.innerHeight - 100) el.classList.add("active");
-                });
-            });
-
-            // TYPING EFFECT
-            const typingText = document.querySelector('.typing-text');
-            const words = ["Futures.", "Systems.", "Growth.", "Ideas."];
-            let wordIndex = 0, charIndex = 0, isDeleting = false;
-            function type() {
-                const current = words[wordIndex];
-                if (isDeleting) { charIndex--; typingText.textContent = current.substring(0, charIndex); } 
-                else { charIndex++; typingText.textContent = current.substring(0, charIndex); }
-                if(!isDeleting && charIndex === current.length) { isDeleting = true; setTimeout(type, 2000); } 
-                else if(isDeleting && charIndex === 0) { isDeleting = false; wordIndex = (wordIndex + 1) % words.length; setTimeout(type, 500); } 
-                else { setTimeout(type, isDeleting ? 100 : 200); }
-            }
-            type();
-
-            // DARK MODE TOGGLE
-            document.getElementById('themeToggle').addEventListener('click', () => {
-                document.body.classList.toggle('dark-mode');
-                const icon = document.querySelector('#themeToggle i');
-                icon.classList.toggle('fa-moon');
-                icon.classList.toggle('fa-sun');
-            });
-
-            // LANGUAGE TOGGLE
-            const langToggle = document.getElementById('langToggle');
-            const langText = document.getElementById('langText');
-            let isHindi = false;
-            const translations = {
-                'nav_home': 'होम', 'nav_about': 'एजेंसी', 'nav_work': 'प्रोजेक्ट्स', 'nav_service': 'सेवाएं', 'nav_contact': 'संपर्क',
-                'heroTitle': 'हम डिजिटल भविष्य <br> बनाते हैं',
-                'heroDesc': 'WebFolio में आपका स्वागत है। हम विज़न और वास्तविकता के बीच की खाई को पाटते हैं।',
-                'btn_work': 'केस स्टडीज', 'btn_contact': 'प्रोजेक्ट शुरू करें',
-                'title_about': 'विशेषज्ञता', 'card1_title': 'इंजीनियरिंग', 'card2_title': 'टेक स्टैक', 'card3_title': 'ट्रैक रिकॉर्ड',
-                'title_process': 'विकास प्रक्रिया', 'step1_title': 'रणनीति', 'step2_title': 'डिज़ाइन', 'step3_title': 'लॉन्च',
-                'title_projects': 'केस स्टडीज', 'title_clients': 'क्लाइंट डिलीवरी', 'sub_clients': 'सफल प्रोजेक्ट्स',
-                'title_testi': 'ग्राहक की राय', 'title_services': 'योजनाएं', 'title_faq': 'सामान्य प्रश्न',
-                'title_contact': 'संपर्क करें', 'sub_contact': 'आइए कुछ अद्भुत बनाएं।', 'badge_secure':'सुरक्षित', 'badge_time':'तेज़','badge_support':'24/7'
-            };
-            const originalText = {};
-            document.querySelectorAll('[data-key]').forEach(el => originalText[el.getAttribute('data-key')] = el.innerHTML);
-
-            langToggle.addEventListener('click', () => {
-                isHindi = !isHindi;
-                langText.textContent = isHindi ? "EN" : "HI";
-                document.querySelectorAll('[data-key]').forEach(el => {
-                    const key = el.getAttribute('data-key');
-                    if(isHindi && translations[key]) el.innerHTML = translations[key];
-                    else el.innerHTML = originalText[key];
-                });
-            });
-
-            // FAQ ACCORDION LOGIC
-            document.querySelectorAll('.faq-item').forEach(item => {
-                item.addEventListener('click', () => {
-                    item.classList.toggle('active');
-                    const icon = item.querySelector('i');
-                    icon.style.transform = item.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0)';
-                });
-            });
-
-            document.getElementById('year').textContent = new Date().getFullYear();
-
-            // ==========================================
-            // AJAX FORM SUBMISSION HANDLERS
-            // ==========================================
-            
-            // Helper function to handle form submission
-            function handleAjaxSubmit(event) {
-                event.preventDefault();
-                const form = event.target;
-                const button = form.querySelector('button[type="submit"]');
-                // Find the status element: either class .form-status or ID #detailedStatus
-                const statusText = form.querySelector('.form-status') || document.getElementById('detailedStatus');
-                
-                // Disable button and change text
-                const originalBtnText = button.innerText;
-                button.disabled = true;
-                button.innerText = "Sending...";
-
-                fetch(form.action, {
-                    method: form.method,
-                    body: new FormData(form),
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                }).then(response => {
-                    if (response.ok) {
-                        statusText.style.display = 'block';
-                        statusText.style.color = '#10b981'; // Success Green
-                        statusText.innerText = "Message sent successfully!";
-                        form.reset();
-                    } else {
-                        response.json().then(data => {
-                            if (Object.hasOwn(data, 'errors')) {
-                                statusText.innerText = data["errors"].map(error => error["message"]).join(", ");
-                            } else {
-                                statusText.innerText = "Oops! There was a problem.";
-                            }
-                            statusText.style.display = 'block';
-                            statusText.style.color = '#ef4444'; // Error Red
-                        })
-                    }
-                }).catch(error => {
-                    statusText.innerText = "Error sending message.";
-                    statusText.style.display = 'block';
-                    statusText.style.color = '#ef4444';
-                }).finally(() => {
-                    button.disabled = false;
-                    button.innerText = originalBtnText;
-                });
-            }
-
-            // Attach listeners to the 3 forms
-            const form1 = document.getElementById('quick-gen');
-            if(form1) form1.addEventListener('submit', handleAjaxSubmit);
-
-            const form2 = document.getElementById('quick-fee');
-            if(form2) form2.addEventListener('submit', handleAjaxSubmit);
-
-            const form3 = document.getElementById('detailedForm');
-            if(form3) form3.addEventListener('submit', handleAjaxSubmit);
-
-        });
-
-        function toggleForm(id) {
-            document.querySelectorAll('.quick-form-panel').forEach(f => f.classList.remove('active'));
-            document.getElementById(id).classList.toggle('active');
-        }
-
-        // MODAL LOGIC
-        function openImageModal(imgSrc) {
-            const modal = document.getElementById('imageModal');
-            document.getElementById('modalImg').src = imgSrc;
-            modal.style.display = "flex";
-        }
-        function closeImageModal() { document.getElementById('imageModal').style.display = "none"; }
-        window.onclick = function(event) {
-            const modal = document.getElementById('imageModal');
-            if (event.target == modal) modal.style.display = "none";
-        }
-    </script>
+  <script src="assets/js/main.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
