@@ -1,41 +1,80 @@
-# WebFolio | Pratham Kumar - Professional Portfolio & Services
+﻿# WebFolio Multi-Page Portfolio
 
-![WebFolio Preview](https://via.placeholder.com/1200x400?text=WebFolio+By+Pratham+Kumar)
-**WebFolio** is a professional, single-page portfolio website designed for **Pratham Kumar**. It serves as a digital hub to showcase technical expertise in Web Development and AI, display service pricing, and facilitate client orders for freelance projects.
+WebFolio is a responsive multi-page portfolio website focused on premium presentation, smooth motion, conversion-first UX, and long-term maintainability.
 
-The website features a modern "Tech-Blue" aesthetic, a fully responsive layout, and integrated tools for client interaction.
+## Pages
 
-## 🚀 Live Demo
-**[View Live Site](https://rajpratham1.github.io/my-portfolio/)**
+1. `index.html`
+2. `about.html`
+3. `services.html`
+4. `work.html`
+5. `dedication.html`
+6. `process.html`
+7. `showcase.html`
+8. `testimonials.html`
+9. `pricing.html`
+10. `faq.html`
+11. `contact.html`
+12. `hire.html`
+13. `thank-you.html`
+14. `privacy.html`
+15. `terms.html`
 
-## ✨ Key Features
+## Tech Stack
 
-* **Responsive Design:** Optimized for mobile, tablet, and desktop screens.
-* **Project Showcase:** A detailed grid displaying live projects with links:
-    * *MediScan AI* (Breast Cancer Detection)
-    * *CrimePortal* (Secure Reporting System)
-    * *Cyber Threat Intel* (Live Threat Map)
-    * *Aether Tools* (Utility Suite)
-    * *Disaster Ready Campus* (Hackathon Solution)
-* **Services & Pricing:** Clear pricing tiers for Web Development and Resume services.
-* **Ready-to-Order Banner:** High-impact Call-to-Action section.
-* **Interactive Contact Section:** * Direct links for WhatsApp, Email, and Phone.
-    * **Formspree Integration:** Three distinct forms for General Queries, Fee Inquiries, and Detailed Project requests.
-* **Payment Gateway:** Visible UPI ID and QR Code display for advance payments.
+- HTML5
+- CSS3 (custom design system and motion system)
+- JavaScript (navigation, reveal effects, counters, tracking hooks)
+- FormSubmit (direct message handling)
 
-## 🛠️ Technologies Used
+## Visual and UX Improvements
 
-* **HTML5:** Semantic structure.
-* **CSS3:** Custom variables, Flexbox, Grid, and Glassmorphism effects.
-* **JavaScript:** DOM manipulation for mobile navigation, smooth scrolling, and form switching.
-* **FontAwesome:** Vector icons.
-* **Formspree:** Backend service for handling email form submissions.
+- Unique themed look on each page using page-level color tokens
+- Smooth reveal animations with IntersectionObserver
+- Animated metric counters and trust/proof blocks
+- Scroll progress indicator, ripple clicks, hover depth, and dynamic effects
+- Responsive navigation with mobile menu behavior
+- Skip link, visible focus states, breadcrumbs, and reduced-motion support
+- Unified header/footer with legal page links
+- FormSubmit flow redirected to `thank-you.html`
+- SEO baseline on each page: canonical, Open Graph, Twitter cards, JSON-LD
+- Analytics scaffold (GA4 placeholder + CTA/contact event hooks)
 
-## 📂 Project Structure
+## Project Structure
 
 ```text
-/
-├── index.html          # Main website file (HTML, CSS, JS combined)
-├── webfolio logo.jpg   # Browser tab icon (Favicon)
-├── paytm qr.jpg        # UPI QR Code image
-└── README.md           # Documentation
+WebFolio/
+|- index.html
+|- about.html
+|- services.html
+|- work.html
+|- dedication.html
+|- process.html
+|- showcase.html
+|- testimonials.html
+|- pricing.html
+|- faq.html
+|- contact.html
+|- hire.html
+|- thank-you.html
+|- privacy.html
+|- terms.html
+|- assets/
+|  |- css/
+|  |  |- styles.css
+|  |- js/
+|  |  |- main.js
+|  |- logo/
+|     |- webfolio-mark.svg
+|- sitemap.xml
+|- README.md
+```
+
+## Setup Notes
+
+- Replace `G-XXXXXXXXXX` in every page with your real GA4 Measurement ID.
+- First FormSubmit message may require email verification from FormSubmit.
+
+## Run Locally
+
+Open `index.html` in a browser, or run any static local server.
