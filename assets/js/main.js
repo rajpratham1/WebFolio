@@ -157,7 +157,7 @@
   window.addEventListener('scroll', updateProgress, { passive: true });
 
   if (enableHeavyMotion) {
-    const interactiveCards = document.querySelectorAll('.card, .process-card, .apk-card');
+    const interactiveCards = document.querySelectorAll('.card, .process-card, .apk-card, .gallery figure');
     interactiveCards.forEach((card) => {
       card.addEventListener('mousemove', (event) => {
         const rect = card.getBoundingClientRect();
@@ -253,6 +253,19 @@
       crumbWrap.innerHTML = `<nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a><span>/</span><span>${title}</span></nav>`;
       main.prepend(crumbWrap);
     }
+  }
+
+  const pageMain = document.querySelector('main');
+  if (pageMain && !pageMain.querySelector('.global-conversion-cta')) {
+    const cta = document.createElement('section');
+    cta.className = 'section container reveal global-conversion-cta';
+    cta.innerHTML = `
+      <div class="primary-cta-bar">
+        <p>Need a high-converting website, app, or maintenance partner? Start one clear project discussion.</p>
+        <a class="cta" href="contact.html">Start Your Project</a>
+      </div>
+    `;
+    pageMain.appendChild(cta);
   }
 
   const params = new URLSearchParams(window.location.search);
@@ -452,6 +465,14 @@
     document.body.appendChild(quickBar);
   }
 
+  if (!document.querySelector('.desktop-quick-cta')) {
+    const desktopCta = document.createElement('a');
+    desktopCta.className = 'desktop-quick-cta cta';
+    desktopCta.href = 'contact.html';
+    desktopCta.textContent = 'Start Project';
+    document.body.appendChild(desktopCta);
+  }
+
   const faqWrap = document.getElementById('faqAccordion');
   if (faqWrap) {
     const items = faqWrap.querySelectorAll('.faq-item');
@@ -583,4 +604,7 @@
       .catch(() => render(fallbackTestimonials));
   }
 });
+
+
+
 
