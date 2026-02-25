@@ -7,10 +7,13 @@
 <title>Contact | WebFolio</title>
 <meta name="description" content="Contact page for project inquiries and collaboration.">
   
-  <meta name="robots" content="index, follow">
+    <meta name="author" content="WebFolio Studio">
+  <meta name="keywords" content="web development, website design, android app development, ios app interface, portfolio website, seo-friendly website, responsive design, WebFolio">
+<meta name="robots" content="index, follow">
   
   <meta property="og:type" content="website">
-  <link rel="canonical" href="https://rajpratham1.github.io/my-portfolio/contact.html">
+    <meta property="og:locale" content="en_US">
+<link rel="canonical" href="https://rajpratham1.github.io/my-portfolio/contact.html">
   
   <meta property="og:site_name" content="WebFolio">
   <meta property="og:title" content="Contact | WebFolio">
@@ -20,7 +23,8 @@
   
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@webfolio">
-  <meta name="twitter:title" content="Contact | WebFolio">
+    <meta name="twitter:creator" content="@webfolio">
+<meta name="twitter:title" content="Contact | WebFolio">
   <meta name="twitter:description" content="Contact page for project inquiries and collaboration.">
   <meta name="twitter:image" content="https://rajpratham1.github.io/my-portfolio/assets/logo/webfolio-mark.svg">
 
@@ -125,6 +129,19 @@
       </div>
 
           <div class="field">
+            <label for="businessType">Business Type</label>
+            <select id="businessType" name="business_type" required>
+              <option value="">Select business type</option>
+              <option value="Startup">Startup</option>
+              <option value="Local Business">Local Business</option>
+              <option value="Agency">Agency</option>
+              <option value="Healthcare">Healthcare</option>
+              <option value="Education">Education</option>
+              <option value="Other">Other</option>
+            </select>
+      </div>
+
+          <div class="field">
             <label for="service">Service Needed</label>
             <select id="service" name="service" required>
               <option value="">Select service</option>
@@ -137,10 +154,33 @@
       </div>
 
           <div class="field">
+            <label for="budget">Budget Range</label>
+            <select id="budget" name="budget_range" required>
+              <option value="">Select budget range</option>
+              <option value="Under 25k INR">Under 25k INR</option>
+              <option value="25k - 60k INR">25k - 60k INR</option>
+              <option value="60k - 120k INR">60k - 120k INR</option>
+              <option value="120k+ INR">120k+ INR</option>
+            </select>
+      </div>
+
+          <div class="field">
+            <label for="timeline">Preferred Timeline</label>
+            <select id="timeline" name="preferred_timeline" required>
+              <option value="">Select timeline</option>
+              <option value="Urgent (within 1 week)">Urgent (within 1 week)</option>
+              <option value="2-4 weeks">2-4 weeks</option>
+              <option value="1-2 months">1-2 months</option>
+              <option value="Flexible">Flexible</option>
+            </select>
+      </div>
+
+          <div class="field">
             <label for="message">Project Message</label>
             <textarea id="message" name="message" required placeholder="Share your goals, pages needed, and timeline."></textarea>
       </div>
 
+          <a class="contact-btn" href="https://wa.me/916200892887" target="_blank" rel="noopener noreferrer">Book 15-min Call</a>
           <button class="cta submit-btn" type="submit">Send Message Now</button>
           <p id="formStatus" class="form-status-note" role="status" aria-live="polite"></p>
         </form>
@@ -211,11 +251,11 @@
     </section>
   </main>
 
-  <footer class="site-footer">
+      <footer class="site-footer">
     <div class="container footer-grid">
       <div>
         <h3>WebFolio Studio</h3>
-        <p>Purpose-built websites with clean engineering, bold motion, and reliable delivery.</p>
+        <p>Purpose-built websites, Android apps, desktop experiences, and iOS-ready UI systems with reliable delivery.</p>
         <small>Copyright <span id="year"></span> WebFolio</small>
       </div>
       <div class="footer-links">
@@ -229,18 +269,30 @@
         <a data-nav href="testimonials.html">Testimonials</a>
         <a data-nav href="pricing.html">Pricing</a>
         <a data-nav href="faq.html">FAQ</a>
+        <a data-nav href="tools.html">Free Tools</a>
+        <a data-nav href="performance.html">Performance</a>
+        <a data-nav href="release-checklist.html">Release Checklist</a>
         <a data-nav href="contact.html">Contact</a>
         <a data-nav href="hire.html">Hire</a>
         <a data-nav href="privacy.html">Privacy</a>
         <a data-nav href="changelog.html">Changelog</a>
         <a data-nav href="terms.html">Terms</a>
-</div>
+      </div>
     </div>
   </footer>
 
   <script src="assets/js/main.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
 
 
 
