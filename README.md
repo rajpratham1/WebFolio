@@ -1,5 +1,7 @@
 ﻿# WebFolio
 
+ ---
+
 WebFolio is a multi-page portfolio and agency-style website focused on:
 
 - business-first presentation
