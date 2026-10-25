@@ -1,0 +1,22 @@
+{
+  "name": "webfolio",
+  "version": "1.0.0",
+  "description": "WebFolio - Multi-page portfolio and agency website",
+  "scripts": {
+    "dev": "serve -l 3000 .",
+    "start": "serve -l 3000 .",
+    "serve:py": "python -m http.server 5500",
+    "build": "python build.py"
+  },
+  "keywords": [
+    "portfolio",
+    "agency",
+    "static-site",
+    "webfolio"
+  ],
+  "author": "Pratham Kumar",
+  "license": "MIT",
+  "devDependencies": {
+    "serve": "^14.2.6"
+  }
+}

@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /_internal/
+
+Sitemap: https://rajpratham1.github.io/my-portfolio/sitemap.xml
