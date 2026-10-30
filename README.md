@@ -50,4 +50,4 @@ FormSubmit to the configured project email, then the page shows an inline
    vary by location, device, personalization, and index freshness.
 
 ## Contact
-Founder: Pratham Kumar · shrivastavapratham40@gmail.com · +91-6200892887 · https://github.com/rajpratham1
+Founder: Pratham Kumar · shrivastavapratham40@gmail.com · +91-6200892887 · https://webfolio.page
