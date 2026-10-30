@@ -2,7 +2,7 @@
 
 Multi-page portfolio / agency website. Static HTML + CSS + vanilla JS — no database, deploys anywhere (GitHub Pages, Netlify, Vercel).
 
-The published site is [https://rajpratham1.github.io/my-portfolio/](https://rajpratham1.github.io/my-portfolio/).
+The published site is [https://prathamkumar.me/](https://prathamkumar.me/).
 
 ## Structure
 ```
